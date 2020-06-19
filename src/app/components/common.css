@@ -1,3 +1,4 @@
+/* misc */
 .card {
     background-color: #2e3034;
     border-radius: 8px;
@@ -24,6 +25,9 @@
     position: relative;
 }
 
+/**/
+
+/* clickables */
 .fab {
     color: #dadce0;
     display: inline-flex;
@@ -52,7 +56,7 @@
     text-transform: uppercase;
     font-weight: 500;
     position: relative;
-    bottom: -1px;;
+    bottom: -1px;
 }
 
 .fab-sm {
@@ -100,3 +104,40 @@
 .btn-danger {
     color: #dc004e;
 }
+
+.link-heavy {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.link-underline {
+    cursor: pointer;
+    text-decoration: underline;
+}
+/**/
+
+/* text */
+.text-default {
+    color: #dadce0;
+}
+
+.text-light {
+    color: #6e767d;
+}
+
+.text-defualt-dark {
+    color: #2e3034;
+}
+
+.text-primary {
+    color: #4169e1;
+}
+
+.text-danger {
+    color: #dc004e;
+}
+
+.text-yellow {
+    color: #ffeb3b
+}
+/**/

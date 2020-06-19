@@ -1,1 +1,61 @@
-<p>note works!</p>
+<div class="post bgDark">
+    <div class="postHeader">
+        <div class="userImg">
+            <img src="../../../../assets/images/TTN-img.png" alt="" srcset="" />
+        </div>
+        <div class="meta text-default">
+            <span>nilesh kumar</span>
+            <span id="meta-email" class="link-underline text-primary">
+                nilesh.kumar@tothenew.com
+            </span>
+            <span id="meta-separator" class="separator">
+                <i class="fas fa-circle"></i>
+            </span>
+            <span id="meta-follow-link" class="link-heavy text-primary">Follow</span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="description text-default">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam iure
+            dolores nesciunt tempore ratione eum, aut nisi rem quos in repellat.
+            Ut corrupti corporis rem harum blanditiis illo quas assumenda?
+        </div>
+        <div class="images">
+            <div class="image">
+                <img src="../../../../assets/images/TTN-img.png" alt="" srcset="">
+            </div>
+            <div class="image">
+                <img src="../../../../assets/images/home-banner.jpg" alt="" srcset="">
+            </div>
+            <div class="image">
+                <img src="../../../../assets/images/rock.png" alt="" srcset="">
+            </div>
+            <div class="image">
+                <img src="../../../../assets/images/transparency.png" alt="" srcset="">
+            </div>
+        </div>
+        <span class="date text-light">jun 17</span>
+        <div class="reactions">
+            <div class="control">
+                <button id="comments" class="fab fab-sm">
+                    <i class="fal fa-comment-alt"></i>
+                    <span>12345</span>
+                </button>
+            </div>
+            <div class="control">
+                <button id="like" [ngClass]="{'fab fab-sm': true, 'text-danger': liked}" (click)="toggleLike()">
+                    <i *ngIf="liked" class="fas fa-heart"></i>
+                    <i *ngIf="!liked" class="fal fa-heart"></i>
+                    <span>12345</span>
+                </button>
+            </div>
+            <div class="control">
+                <button id="dislike" [ngClass]="{'fab fab-sm': true, 'text-yellow': disliked}" (click)="toggleDislike()">
+                    <i *ngIf="disliked" class="fas fa-frown"></i>
+                    <i *ngIf="!disliked" class="fal fa-frown"></i>
+                    <span>12345</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
