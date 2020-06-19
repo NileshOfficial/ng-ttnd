@@ -1,0 +1,22 @@
+* {
+    color: rgba(255, 255, 255, 0.87);
+}
+
+main {
+    padding: 3rem;
+}
+
+ttnd-nav {
+    position: absolute;
+    top: 3rem;
+    bottom: 3rem;
+    overflow: visible;
+    z-index: 2;
+}
+
+.content {
+    position: relative;
+    left: 80px;
+    max-width: calc(100% - 80px);
+    padding-left: 3rem;
+}

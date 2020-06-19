@@ -1,0 +1,30 @@
+<nav>
+    <div class="logo">
+        <div class="imageContainer">
+            <img src="../../../assets/images/rock.png" alt="rock.png" />
+        </div>
+        <span>Tasks</span>
+    </div>
+    <ul>
+        <li class="active">
+            <i class="fal fa-home"></i>
+            <span class="text">your feed</span>
+        </li>
+        <li>
+            <i class="fal fa-tags"></i>
+            <span class="text">your complaints</span>
+        </li>
+        <li *ngFor="let note of personalNotes">
+            <i class="fal fa-sticky-note"></i>
+            <span class="text">{{ note }}</span>
+        </li>
+        <li>
+            <i class="far fa-ellipsis-h"></i>
+            <span class="text">all your note collections</span>
+        </li>
+        <li>
+            <i class="fal fa-plus"></i>
+            <span class="text">new notes collection</span>
+        </li>
+    </ul>
+</nav>

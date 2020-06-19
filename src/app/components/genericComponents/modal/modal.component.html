@@ -1,0 +1,7 @@
+<div *ngIf="showUp" (click)="hideModal()" class="overlay"></div>
+
+<div *ngIf="showUp">
+    <ng-content card-header select="[modal-header]"></ng-content>
+    <ng-content card-body select="[modal-body]"></ng-content>
+    <ng-content card-footer select="[modal-footer]"></ng-content>
+</div>

@@ -1,0 +1,56 @@
+.inputContainer {
+    background-color: rgba(255, 255, 255, 0.09);
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.inputContainer::ng-deep input[textField] {
+    background-color: transparent;
+    width: 100%;
+    padding: 27px 12px 10px;
+    border: none;
+    color: #fff;
+    font-size: 1.6rem;
+    border: 1px solid transparent;
+    border-radius: 0;
+    transition: 0.2s ease-in-out;
+}
+
+.inputContainer::ng-deep input[textField]:focus {
+    border-bottom-color: #fff;
+}
+
+.inputContainer .label {
+    font-size: 1.6rem;
+    position: absolute;
+    top: 20px;
+    left: 12px;
+    transition: 0.2s ease-in-out;
+    text-transform: capitalize;
+    z-index: -1;
+}
+
+.inputContainer::ng-deep input[textField]:focus+.label,
+.inputContainer::ng-deep input[textField]:not(:focus):not(:placeholder-shown)+.label
+{
+    font-size: 1.2rem;
+    top: 9px;
+}
+
+.message {
+    display: inline-block;
+    font-size: 1.2rem;
+    margin-top: 3px;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+.error {
+    color: #f44336;
+}
+
+.inputContainer::ng-deep input[textField].ng-invalid {
+    border-bottom-color: #f44336;
+}

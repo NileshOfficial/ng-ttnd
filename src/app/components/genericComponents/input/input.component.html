@@ -1,0 +1,5 @@
+<div class="inputContainer">
+    <ng-content select="input"></ng-content>
+    <span [ngClass]="{label: true, error: error}">{{ label }}</span>
+</div>
+<span [ngClass]="{message: true, error: error}">{{ message }}</span>
