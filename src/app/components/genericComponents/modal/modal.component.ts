@@ -1,17 +1,16 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'tasks-modal',
+  selector: 'ttnd-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  styleUrls: ['./modal.component.css', '../../common.css']
 })
 export class ModalComponent {
 
-  @Input() showUp: boolean = false;
-  @Output() showUpChanged: EventEmitter<boolean> = new EventEmitter();
+  @Input() showUp: boolean = true;
 
   hideModal() {
-    this.showUpChanged.emit(false);
+    this.showUp = false;
   }
 
 }
