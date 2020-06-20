@@ -10,7 +10,11 @@
     background-color: #2e3034;
 }
 
-.differentiate {
+.differentiate-top {
+    border-top: 1px solid #777;
+}
+
+.differentiate-bottom {
     border-bottom: 1px solid #777;
 }
 
@@ -91,6 +95,14 @@
     outline: none;
     cursor: pointer;
     max-width: 250px;
+}
+
+.btn.btn-minimal {
+    padding: 8px;
+}
+
+.btn.btn-minimal:hover {
+    background: none;
 }
 
 .btn:hover {
