@@ -13,13 +13,12 @@ import { BuzzPostComponent } from "./components/buzz/buzzpost/buzzpost.component
 import { ClickawayDirective } from "./directives/clickaway.directive";
 import { MultilineInputDirective } from "./directives/multilineInput.directive";
 import { FontDirective } from "./directives/font.directive";
-<<<<<<< HEAD
 import { LoginBoardComponent } from './components/login-board/login-board.component';
 import { AuthCallbackComponent } from './components/login-board/auth-callback/auth-callback.component';
 import { HomeComponent } from './components/home/home.component';
-=======
 import { CommentsSectionComponent } from './components/buzz/commentsSection/commentsSection.component';
->>>>>>> added comments section
+import { PostCommentComponent } from './components/buzz/commentsSection/postComment/post-comment.component';
+import { CommentComponent } from './components/buzz/commentsSection/comment/comment.component';
 
 @NgModule({
     declarations: [
@@ -33,13 +32,12 @@ import { CommentsSectionComponent } from './components/buzz/commentsSection/comm
         ClickawayDirective,
         MultilineInputDirective,
         FontDirective,
-<<<<<<< HEAD
         LoginBoardComponent,
         AuthCallbackComponent,
         HomeComponent,
-=======
         CommentsSectionComponent,
->>>>>>> added comments section
+        PostCommentComponent,
+        CommentComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule],
     providers: [],
