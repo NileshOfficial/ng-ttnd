@@ -1,7 +1,19 @@
 <div class="comments-section card">
     <h4 class="differentiate-bottom text-default">comments</h4>
     <div class="comments"></div>
-    <div class="comment-input differentiate-bottom">
-        <ttnd-post-comment></ttnd-post-comment>
+    <div class="comment-input differentiate-top">
+        <span class="reply-message" [ngClass]="{'hide': !replySelected}">
+            <span>Replying to someone</span>
+            <button class="fab" (click)="discardReplySelected()">
+                <i class="fal fa-times"></i>
+            </button>
+        </span>
+        <div class="input-control">
+            <div class="user-img">
+                <img src="../../../../assets/images/rock.png" alt="user">
+            </div>
+            <input class="text-default" placeholder="Add a comment..." type="text">
+            <button class="btn btn-minimal btn-primary">post</button>
+        </div>
     </div>
 </div>

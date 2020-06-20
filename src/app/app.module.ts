@@ -17,7 +17,6 @@ import { LoginBoardComponent } from './components/login-board/login-board.compon
 import { AuthCallbackComponent } from './components/login-board/auth-callback/auth-callback.component';
 import { HomeComponent } from './components/home/home.component';
 import { CommentsSectionComponent } from './components/buzz/commentsSection/commentsSection.component';
-import { PostCommentComponent } from './components/buzz/commentsSection/postComment/post-comment.component';
 import { CommentComponent } from './components/buzz/commentsSection/comment/comment.component';
 
 @NgModule({
@@ -36,7 +35,6 @@ import { CommentComponent } from './components/buzz/commentsSection/comment/comm
         AuthCallbackComponent,
         HomeComponent,
         CommentsSectionComponent,
-        PostCommentComponent,
         CommentComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule],

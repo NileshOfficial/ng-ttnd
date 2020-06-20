@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentsSectionComponent implements OnInit {
 
+  replySelected: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+  
+  discardReplySelected(): void {
+    setTimeout(() => {
+      this.replySelected = !this.replySelected;
+    }, 100);
   }
 
 }

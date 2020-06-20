@@ -153,3 +153,11 @@
     color: #ffeb3b
 }
 /**/
+
+/* display tweaks */
+.hide {
+    visibility: hidden;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}

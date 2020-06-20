@@ -2,6 +2,53 @@
     padding: 5px 2rem;
 }
 
-.comments-section .comment-input {
+.comments-section .comment-input .reply-message {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
     padding: 1rem 2rem;
+    font-size: 1.4rem;
+    background-color: #444;
+}
+
+.comments-section .comment-input .reply-message .fab {
+    font-size: 1.6rem;
+}
+
+.comments-section .reply-message .fab:hover {
+    background: none;
+}
+
+.comments-section .comment-input .input-control {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.comments-section .comment-input .input-control .user-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.comments-section .comment-input .input-control .user-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.comments-section .comment-input .input-control input {
+    margin-left: 1.5rem;
+    font-size: 1.6rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    min-width: 300px;
+}
+
+.comments-section .comment-input .input-control .btn:hover {
+    background: none;
 }
