@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'ttnd-post-comment',
   templateUrl: './post-comment.component.html',
-  styleUrls: ['./post-comment.component.css']
+  styleUrls: ['./post-comment.component.css', '../../../common.css']
 })
 export class PostCommentComponent implements OnInit {
 
