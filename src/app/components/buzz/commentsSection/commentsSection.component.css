@@ -2,6 +2,10 @@
     padding: 5px 2rem;
 }
 
+.comments-section .comments {
+    padding: 2rem 2rem 0 2rem;
+}
+
 .comments-section .comment-input .reply-message {
     display: inline-flex;
     width: 100%;
@@ -33,6 +37,7 @@
     height: 30px;
     border-radius: 50%;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .comments-section .comment-input .input-control .user-img img {
@@ -46,7 +51,11 @@
     background-color: transparent;
     border: none;
     outline: none;
-    min-width: 300px;
+    flex-grow: 1;
+}
+
+.comments-section .comment-input .input-control .btn {
+    flex-shrink: 0;
 }
 
 .comments-section .comment-input .input-control .btn:hover {
