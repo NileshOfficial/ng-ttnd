@@ -12,7 +12,7 @@ import { BuzzPostComponent } from "./components/buzz/buzzpost/buzzpost.component
 import { ClickawayDirective } from "./directives/clickaway.directive";
 import { MultilineInputDirective } from "./directives/multilineInput.directive";
 import { FontDirective } from "./directives/font.directive";
-import { LoginBoardComponent } from './login-board/login-board.component';
+import { LoginBoardComponent } from './components/login-board/login-board.component';
 
 @NgModule({
     declarations: [
