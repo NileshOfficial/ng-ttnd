@@ -18,6 +18,7 @@ import { AuthCallbackComponent } from './components/login-board/auth-callback/au
 import { HomeComponent } from './components/home/home.component';
 import { CommentsSectionComponent } from './components/buzz/commentsSection/commentsSection.component';
 import { CommentComponent } from './components/buzz/commentsSection/comment/comment.component';
+import { RenderDirective } from './directives/render.directive';
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import { CommentComponent } from './components/buzz/commentsSection/comment/comm
         HomeComponent,
         CommentsSectionComponent,
         CommentComponent,
+        RenderDirective,
     ],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule],
     providers: [],
