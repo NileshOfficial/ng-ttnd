@@ -8,3 +8,5 @@ export const SCOPE = [
 export const RESPONSE_TYPE = 'code';
 export const ACCESS_TYPE = 'offline';
 export const PROMPT = 'consent';
+export const SIGN_IN = 'signin';
+export const SIGN_UP = 'signup'
