@@ -19,36 +19,41 @@ export class AuthCallbackComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-    const grantCode = this.currentRoute.snapshot.queryParams['code'];
-    const loginMode = this.logindata.loginMode;
-    this.logindata.deleteLoginMode();
-    let authEndpoint: string = null;
+		const grantCode = this.currentRoute.snapshot.queryParams['code'];
+		const loginMode = this.logindata.loginMode;
+		this.logindata.deleteLoginMode();
+		let authEndpoint: string = null;
 
 		switch (loginMode) {
-			case (SIGN_IN_MODE): {
-        console.log('in')
+			case SIGN_IN_MODE: {
+				console.log('in');
 				authEndpoint = SIGN_IN;
-        break;
-      }
-			case (SIGN_UP_MODE): {
-        console.log('up')
-        authEndpoint = SIGN_UP;
-        break;
-      }
+				break;
+			}
+			case SIGN_UP_MODE: {
+				console.log('up');
+				authEndpoint = SIGN_UP;
+				break;
+			}
 			default: {
 				this.router.navigate(['/']);
 				return;
 			}
-    }
+		}
 
 		this.authApi.getAuthToken(authEndpoint, grantCode).subscribe(
 			(data) => {
 				this.logindata.loginToken = data;
-				// this.router.navigate(['/', 'home']);
+				this.router.navigate(['/', 'home']);
 			},
 			(err) => {
-				console.log(err);
-				this.router.navigate(['/']);
+				console.log(err, err.error);
+				this.router.navigate(['/'], {
+					state: {
+						errorCode: err.error.errorCode,
+						message: err.error.message
+					}
+				});
 			}
 		);
 	}

@@ -10,11 +10,13 @@
             </span>
 			<span class="text">login</span>
 		</a>
+		<span class="text-danger err" *ngIf="errType === unauthorized">{{ message }}</span>
 		<a class="login-button" href={{authenticationUri}} (click)="setLoginModeToSingup()">
-            <span class="g">
-                <img src="../../assets/images/google.png" alt="google">
+			<span class="g">
+				<img src="../../assets/images/google.png" alt="google">
             </span>
             <span class="text">signup</span>
 		</a>
+		<span class="text-danger err" *ngIf="errType === duplicateKey">{{ message }}</span>
 	</div>
 </div>
