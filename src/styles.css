@@ -70,6 +70,7 @@ a {
     font-weight: inherit;
     font-size: inherit;
     cursor: pointer;
+    outline: none;
 }
 
 span {
