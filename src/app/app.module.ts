@@ -1,6 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from "./app.component";
 import { NavComponent } from "./components/nav/nav.component";
@@ -28,7 +29,7 @@ import { LoginBoardComponent } from './components/login-board/login-board.compon
         FontDirective,
         LoginBoardComponent,
     ],
-    imports: [BrowserModule, AppRoutingModule],
+    imports: [BrowserModule, AppRoutingModule, HttpClientModule],
     providers: [],
     bootstrap: [AppComponent],
 })
