@@ -1,23 +1,41 @@
 <div class="header differentiate-bottom">
-    <h4>Notes</h4>
-    <div>
-        <form class="create card" (click)="openBuzzForm()" [clickaway]="closeBuzzForm.bind(this)" [ngClass]="{roundedBorders: createBuzz}">
-            <input id="title" *ngIf="createBuzz" type="text" placeholder="Title" name=title>
-            <button *ngIf="createBuzz" class="fab fab-sm" type="button">
-                <i class="fal fa-camera-alt"></i>
-            </button>
-            <textarea defaultFont multiline rows="1" id="description" type="text" placeholder="Post your thoughts..." name="description"></textarea>
-            <div class="controls" *ngIf="createBuzz">
-                <button type="submit" class="btn btn-primary">
-                    add
-                </button>
-                <button type="button" class="btn btn-danger" (click)="closeBuzzForm()">
-                    discard
-                </button>
-            </div>
-        </form>
-    </div>
+	<h4>Notes</h4>
 </div>
 <div class="content">
-    <ttnd-buzzpost></ttnd-buzzpost>
+	<div>
+		<form class="create card">
+			<input id="title" type="text" placeholder="Title" name="title" />
+			<div class="file-btn">
+				<label for="fileInput">
+					<i class="fal fa-camera-alt"></i>
+				</label>
+				<input id="fileInput" type="file" multiple accept="image/png, image/jpeg" />
+			</div>
+			<textarea
+				defaultFont
+				multiline
+				rows="1"
+				id="description"
+				type="text"
+				placeholder="Post your thoughts..."
+				name="description"
+			></textarea>
+			<div class="controls">
+				<div class="dropdown">
+					<select defaultFont>
+						<option value="">select category</option>
+						<option>activity</option>
+						<option>Lost and Found</option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-primary">
+					add
+				</button>
+				<button type="button" class="btn btn-danger">
+					discard
+				</button>
+			</div>
+		</form>
+	</div>
+	<ttnd-buzzpost></ttnd-buzzpost>
 </div>

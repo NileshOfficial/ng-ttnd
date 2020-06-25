@@ -7,19 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuzzComponent implements OnInit {
 
-  createBuzz: boolean = false;
+  createBuzz: boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  openBuzzForm() {
-    this.createBuzz = true;
-  }
-
-  closeBuzzForm() {
-    this.createBuzz = false;
-  }
-
 }

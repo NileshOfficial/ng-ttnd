@@ -1,51 +1,28 @@
-form.card {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    border-radius: 8px 8px 0px 0px;
-    transform: translateX(-50%);
-    padding: 1rem 2rem;
-    width: 600px;
-}
-
-form input, form textarea {
-    width: 100%;
-    border: none;
-    outline: none;
-    background: transparent;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    color: inherit;
-}
-
-form textarea {
-    padding-top: 5px;
-    padding-bottom: 4px;
-    resize: none;
-    min-height: 39px;
-    max-height: 500px;
-    overflow: auto;
-}
-
 form #title {
-    width: calc(100% - 48px);
-    font-size: 2.2rem;
+	width: calc(100% - 48px);
+	font-size: 2.2rem;
 }
 
 form #description {
     font-size: 1.6rem;
+    margin-bottom: 1.5rem;
 }
 
 form .fab {
-    position: relative;
-    top: 3px;
+	position: relative;
+	top: 3px;
 }
 
-form .controls {
-    display: flex;
-    justify-content: flex-end;
+.content {
+	display: flex;
+	margin-top: 3rem;
 }
 
-.roundedBorders {
-    border-radius: 8px !important;
+.content form {
+	margin-right: 3rem;
+}
+
+.dropdown {
+    margin-right: auto;
+    margin-left: 0;
 }
