@@ -1,3 +1,12 @@
+.form-container {
+    flex: 1;
+    margin-right: 3rem;
+}
+
+form {
+    width: 100%;
+}
+
 form #title {
 	width: calc(100% - 48px);
 	font-size: 2.2rem;
@@ -18,8 +27,8 @@ form .fab {
 	margin-top: 3rem;
 }
 
-.content form {
-	margin-right: 3rem;
+.content ttnd-buzzpost {
+    flex: 1;
 }
 
 .dropdown {
