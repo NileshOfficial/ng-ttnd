@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as config from '../../config/login.conf';
 import { HttpParams } from '@angular/common/http';
+import { LoginDataService } from 'src/app/services/dataServices/auth.service';
+import { SIGN_IN, SIGN_UP } from '../../config/login.conf';
 
 @Component({
   selector: 'ttnd-login-board',
@@ -11,7 +13,7 @@ export class LoginBoardComponent implements OnInit {
 
   authenticationUri: string = '#';
 
-  constructor() { }
+  constructor(private loginData: LoginDataService) { }
 
   ngOnInit(): void {
     const authConfig = {
@@ -27,6 +29,16 @@ export class LoginBoardComponent implements OnInit {
       config.OAUTH_GRANT_CODE_URI,
       new HttpParams({fromObject: authConfig}).toString()
     ].join('?');
+
+    this.loginData.deleteToken();
+  }
+
+  setLoginModeToSignin(): void {
+    this.loginData.loginMode = SIGN_IN;
+  }
+
+  setLoginModeToSingup(): void {
+    this.loginData.loginMode = SIGN_UP;
   }
 
 }

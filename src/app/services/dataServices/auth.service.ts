@@ -18,15 +18,16 @@ const deleteToken = (): void => {
 	providedIn: 'root'
 })
 export class LoginDataService {
-	private mode: string = null;
 	private token: LoginToken = null;
 
+	constructor() {}
+
 	get loginMode(): string {
-		return this.mode;
+		return localStorage.getItem('mode');
 	}
 
 	set loginMode(mode: string) {
-		this.loginMode = mode;
+		localStorage.setItem('mode', mode);
 	}
 
 	get loginToken(): LoginToken {
@@ -39,8 +40,12 @@ export class LoginDataService {
     storeToken(this.token);
   }
 
-  delete(): void {
+  deleteToken(): void {
     this.token = null;
     deleteToken();
+  }
+
+  deleteLoginMode() {
+	  localStorage.removeItem('mode');
   }
 }
