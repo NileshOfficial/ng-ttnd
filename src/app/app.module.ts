@@ -15,6 +15,7 @@ import { MultilineInputDirective } from "./directives/multilineInput.directive";
 import { FontDirective } from "./directives/font.directive";
 import { LoginBoardComponent } from './components/login-board/login-board.component';
 import { AuthCallbackComponent } from './components/login-board/auth-callback/auth-callback.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { AuthCallbackComponent } from './components/login-board/auth-callback/au
         FontDirective,
         LoginBoardComponent,
         AuthCallbackComponent,
+        HomeComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule],
     providers: [],
