@@ -14,6 +14,7 @@ import { ClickawayDirective } from "./directives/clickaway.directive";
 import { MultilineInputDirective } from "./directives/multilineInput.directive";
 import { FontDirective } from "./directives/font.directive";
 import { LoginBoardComponent } from './components/login-board/login-board.component';
+import { AuthCallbackComponent } from './components/login-board/auth-callback/auth-callback.component';
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { LoginBoardComponent } from './components/login-board/login-board.compon
         MultilineInputDirective,
         FontDirective,
         LoginBoardComponent,
+        AuthCallbackComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule],
     providers: [],
