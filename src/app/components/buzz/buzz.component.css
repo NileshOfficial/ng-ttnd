@@ -35,3 +35,11 @@ form .fab {
     margin-right: auto;
     margin-left: 0;
 }
+
+.ng-touched.ng-invalid {
+    box-shadow: 0 0 4px #f00;
+}
+
+.fileErr {
+    font-size: 1.2rem;
+}
