@@ -177,6 +177,10 @@
 .text-yellow {
 	color: #ffeb3b;
 }
+
+.message {
+	font-size: 1.6rem;
+}
 /**/
 
 /* display tweaks */
@@ -269,4 +273,16 @@ form textarea {
 form .controls {
 	display: flex;
 	justify-content: flex-end;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.09);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

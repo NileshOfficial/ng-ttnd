@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { buzzForm } from './buzz.form';
 import { FormGroup } from '@angular/forms';
 import { BuzzapiService } from '../../services/apis/buzzapi.service';
-import { conditionallyCreateMapObjectLiteral } from '@angular/compiler/src/render3/view/util';
 
 @Component({
 	selector: 'ttnd-buzz',
@@ -12,9 +11,11 @@ import { conditionallyCreateMapObjectLiteral } from '@angular/compiler/src/rende
 export class BuzzComponent implements OnInit {
 	buzzForm: FormGroup = buzzForm;
 	allowedFileType: Array<string> = ['image/png', 'image/jpeg'];
-	invalidFile: boolean = false;
-
 	uploadedFiles: Array<File> = [];
+
+	invalidFile: boolean = false;
+	postingBuzz: boolean = false;
+	err: boolean = false;
 
 	constructor(private api: BuzzapiService) {}
 
@@ -22,15 +23,18 @@ export class BuzzComponent implements OnInit {
 
 	createBuzz() {
 		if (this.buzzForm.valid) {
+			this.showLoader()
 			const data = this.prepareDataToPost();
 			this.api.postBuzz(data).subscribe(
 				(data) => {
 					this.buzzForm.reset({
 						category: ''
 					});
+					this.hideLoader();
 				},
 				(err) => {
 					console.log(err);
+					this.showErr();
 				}
 			);
 		}
@@ -66,5 +70,19 @@ export class BuzzComponent implements OnInit {
 			for (const file of this.uploadedFiles) sharableFormData.append('files', file, file.name);
 
 		return sharableFormData;
+	}
+
+	showLoader(): void {
+		this.postingBuzz = true;
+	}
+
+	showErr(): void {
+		this.postingBuzz = false;
+		this.err = true;
+	}
+
+	hideLoader(): void {
+		this.postingBuzz = false;
+		this.err = false;
 	}
 }

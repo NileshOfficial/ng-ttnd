@@ -38,6 +38,10 @@
 				</button>
 			</div>
 		</form>
+		<div class="overlay" *ngIf="err || postingBuzz">
+			<ttnd-spinner *ngIf="postingBuzz"></ttnd-spinner>
+			<span class="text-danger message" *ngIf="err">Something went wrong, try refreshing the page or contact administrator.</span>
+		</div>
 	</div>
 	<!-- <ttnd-infinite [repeat]="b" style="flex: 1;"></ttnd-infinite> -->
 </div>

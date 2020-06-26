@@ -1,6 +1,7 @@
 .form-container {
     flex: 1;
     margin-right: 3rem;
+    position: relative;
 }
 
 form {
