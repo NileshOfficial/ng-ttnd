@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -22,6 +22,8 @@ import { CommentsSectionComponent } from './components/buzz/commentsSection/comm
 import { CommentComponent } from './components/buzz/commentsSection/comment/comment.component';
 import { RenderDirective } from './directives/render.directive';
 import { InfiniteScrollerComponent } from './components/infiniteScroller/infiniteScroller.component';
+
+import { RequestHeaderService } from './services/utils/interceptor.service';
 
 @NgModule({
 	declarations: [
@@ -44,7 +46,7 @@ import { InfiniteScrollerComponent } from './components/infiniteScroller/infinit
 		InfiniteScrollerComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, InfiniteScrollModule, ReactiveFormsModule],
-	providers: [],
+	providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestHeaderService, multi: true }],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}
