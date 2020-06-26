@@ -2,6 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from '@angular/common/http';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppComponent } from "./app.component";
 import { NavComponent } from "./components/nav/nav.component";
@@ -19,6 +20,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CommentsSectionComponent } from './components/buzz/commentsSection/commentsSection.component';
 import { CommentComponent } from './components/buzz/commentsSection/comment/comment.component';
 import { RenderDirective } from './directives/render.directive';
+import { InfiniteScrollerComponent } from './components/infiniteScroller/infiniteScroller.component';
 
 @NgModule({
     declarations: [
@@ -38,8 +40,9 @@ import { RenderDirective } from './directives/render.directive';
         CommentsSectionComponent,
         CommentComponent,
         RenderDirective,
+        InfiniteScrollerComponent,
     ],
-    imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+    imports: [BrowserModule, AppRoutingModule, HttpClientModule, InfiniteScrollModule],
     providers: [],
     bootstrap: [AppComponent],
 })
