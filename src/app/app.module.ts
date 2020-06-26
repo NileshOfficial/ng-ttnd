@@ -24,6 +24,7 @@ import { RenderDirective } from './directives/render.directive';
 import { InfiniteScrollerComponent } from './components/infiniteScroller/infiniteScroller.component';
 
 import { RequestHeaderService } from './services/utils/interceptor.service';
+import { SpinnerComponent } from './components/genericComponents/spinner/spinner.component';
 
 @NgModule({
 	declarations: [
@@ -43,7 +44,8 @@ import { RequestHeaderService } from './services/utils/interceptor.service';
 		CommentsSectionComponent,
 		CommentComponent,
 		RenderDirective,
-		InfiniteScrollerComponent
+		InfiniteScrollerComponent,
+		SpinnerComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, InfiniteScrollModule, ReactiveFormsModule],
 	providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestHeaderService, multi: true }],
