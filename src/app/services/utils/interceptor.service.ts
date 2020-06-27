@@ -7,7 +7,6 @@ export class RequestHeaderService implements HttpInterceptor {
 	constructor(private authData: LoginDataService) {}
 
 	intercept(req: HttpRequest<any>, next: HttpHandler) {
-		console.log(req.url);
 		const urlSegments = this.parseUrl(req.url);
 		let newRequest = req;
 
