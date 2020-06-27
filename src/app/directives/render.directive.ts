@@ -5,8 +5,7 @@ import {
 	Input,
 	ComponentRef,
 	OnInit,
-	OnDestroy,
-  Component
+	OnDestroy
 } from '@angular/core';
 
 @Directive({
@@ -15,7 +14,6 @@ import {
 export class RenderDirective implements OnInit, OnDestroy {
 	@Input() readonly render: any = null;
 	@Input() data: any = null;
-
 	public component: ComponentRef<any>;
 	constructor(private vcRef: ViewContainerRef, private cfr: ComponentFactoryResolver) {}
 
