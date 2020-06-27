@@ -14,11 +14,13 @@ import {
 })
 export class RenderDirective implements OnInit, OnDestroy {
 	@Input() readonly render: any = null;
+	@Input() data: any = null;
 
-	public component: ComponentRef<Component>;
+	public component: ComponentRef<any>;
 	constructor(private vcRef: ViewContainerRef, private cfr: ComponentFactoryResolver) {}
 
 	ngOnInit(): void {
+		console.log(this.data);
 		this.renderComponent();
 	}
 
@@ -28,6 +30,7 @@ export class RenderDirective implements OnInit, OnDestroy {
 			this.vcRef.clear();
 
 			this.component = this.vcRef.createComponent(componentFactory);
+			this.component.instance.data = this.data;
 		}
 	}
 
