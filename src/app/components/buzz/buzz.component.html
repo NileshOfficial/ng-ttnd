@@ -4,13 +4,21 @@
 <div class="content">
 	<div class="form-container">
 		<form class="create card" [formGroup]="buzzForm" (ngSubmit)="createBuzz()">
-			<span *ngIf="invalidFile" class="text-danger fileErr">Maximum 10 count, and only jpeg and png files are allowed.</span>
+			<span *ngIf="invalidFile" class="text-danger fileErr"
+				>Maximum 10 count, and only jpeg and png files are allowed.</span
+			>
 			<input formControlName="title" id="title" type="text" placeholder="Title" name="title" />
 			<div class="file-btn">
 				<label for="fileInput" title="maximum 10, jpeg and png files">
 					<i class="fal fa-camera-alt"></i>
 				</label>
-				<input id="fileInput" type="file" multiple accept={{allowedFileType.join()}} (change)="fileChange($event)"/>
+				<input
+					id="fileInput"
+					type="file"
+					multiple
+					accept="{{ allowedFileType.join() }}"
+					(change)="fileChange($event)"
+				/>
 			</div>
 			<textarea
 				defaultFont
@@ -37,11 +45,13 @@
 					discard
 				</button>
 			</div>
+			<div class="overlay" *ngIf="err || postingBuzz">
+				<ttnd-spinner *ngIf="postingBuzz"></ttnd-spinner>
+				<span class="text-danger message" *ngIf="err"
+					>Something went wrong, try refreshing the page or contact administrator.</span
+				>
+			</div>
 		</form>
-		<div class="overlay" *ngIf="err || postingBuzz">
-			<ttnd-spinner *ngIf="postingBuzz"></ttnd-spinner>
-			<span class="text-danger message" *ngIf="err">Something went wrong, try refreshing the page or contact administrator.</span>
-		</div>
 	</div>
 	<ttnd-infinite [dataService]="api" [limit]="5" [repeat]="buzzPostComponent" style="flex: 1;"></ttnd-infinite>
 </div>
