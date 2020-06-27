@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 const categories = ['activity', 'lost and found'];
 
 function verifyCategory(category: FormControl): { [k: string]: boolean } {
-	console.log(category.value);
 	if (categories.includes(category.value)) return null;
 	else return { invalidCategory: true };
 }

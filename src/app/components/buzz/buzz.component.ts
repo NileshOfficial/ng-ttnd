@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { buzzForm } from './buzz.form';
 import { FormGroup } from '@angular/forms';
 import { BuzzapiService } from '../../services/apis/buzzapi.service';
+import { BuzzPostComponent } from './buzzpost/buzzpost.component';
 
 @Component({
 	selector: 'ttnd-buzz',
@@ -9,6 +10,9 @@ import { BuzzapiService } from '../../services/apis/buzzapi.service';
 	styleUrls: ['./buzz.component.css', '../common.css']
 })
 export class BuzzComponent implements OnInit {
+
+	readonly buzzPostComponent = BuzzPostComponent;
+
 	buzzForm: FormGroup = buzzForm;
 	allowedFileType: Array<string> = ['image/png', 'image/jpeg'];
 	uploadedFiles: Array<File> = [];
@@ -17,7 +21,7 @@ export class BuzzComponent implements OnInit {
 	postingBuzz: boolean = false;
 	err: boolean = false;
 
-	constructor(private api: BuzzapiService) {}
+	constructor(public api: BuzzapiService) {}
 
 	ngOnInit(): void {}
 

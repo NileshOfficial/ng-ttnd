@@ -43,5 +43,5 @@
 			<span class="text-danger message" *ngIf="err">Something went wrong, try refreshing the page or contact administrator.</span>
 		</div>
 	</div>
-	<!-- <ttnd-infinite [repeat]="b" style="flex: 1;"></ttnd-infinite> -->
+	<ttnd-infinite [dataService]="api" [limit]="5" [repeat]="buzzPostComponent" style="flex: 1;"></ttnd-infinite>
 </div>
