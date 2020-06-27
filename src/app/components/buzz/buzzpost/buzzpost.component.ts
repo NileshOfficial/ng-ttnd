@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BUZZ_POST, PROFILE_PIC } from '../../../config/uri.conf';
+import { BuzzapiService } from 'src/app/services/apis/buzzapi.service';
 
 interface Post {
 	_id: string;
@@ -30,9 +31,11 @@ export class BuzzPostComponent implements OnInit {
 
 	liked: boolean = true;
 	disliked: boolean = true;
-	previewImages: Array<string> = [];
+  previewImages: Array<string> = [];
 
-	constructor() {}
+  postingReview: boolean = false;
+
+	constructor(private buzzApi: BuzzapiService) {}
 
 	ngOnInit(): void {
 		const images = this.data.images;
@@ -40,15 +43,88 @@ export class BuzzPostComponent implements OnInit {
 		this.previewImages = images.length >= 4 ? this.data.images.slice(0, 5) : this.data.images;
 
 		this.data.user.picture = [PROFILE_PIC, this.data.user.picture].join('/');
-		this.liked = this.data.liked;
-    this.disliked = this.data.disliked;
-  }
 
-	toggleLike(): void {
-		this.liked = !this.liked;
+		this.liked = this.data.liked;
+		this.disliked = this.data.disliked;
 	}
 
-	toggleDislike(): void {
+	toggleLike() {
+		this.postingReview = true;
+		this.liked = !this.liked;
+		if (this.liked) {
+			if (this.disliked) {
+				this.disliked = false;
+				//update dislike -1
+				this._updateReviews('dislikes', false);
+				this.buzzApi.updateReview(this.data['_id'], true, 'dislike').subscribe();
+			}
+			//update like +1
+			this._updateReviews('likes');
+			this.buzzApi.updateReview(this.data['_id'], false).subscribe(
+				(data) => {
+					this.postingReview = false;
+				},
+				(err) => {
+					this.postingReview = false;
+				}
+			);
+		} else {
+			//update like -1
+			this._updateReviews('likes', false);
+			this.buzzApi.updateReview(this.data['_id'], true).subscribe(
+				(data) => {
+					this.postingReview = false;
+				},
+				(err) => {
+					this.postingReview = false;
+				}
+			);
+		}
+	}
+
+	toggleDislike() {
+		this.postingReview = true;
 		this.disliked = !this.disliked;
+		if (this.disliked) {
+			if (this.liked) {
+				this.liked = false;
+				//update like -1
+				this._updateReviews('likes', false);
+				this.buzzApi.updateReview(this.data['_id'], true).subscribe();
+			}
+			//update dislike +1
+			this._updateReviews('dislikes');
+			this.buzzApi.updateReview(this.data['_id'], false, 'dislike').subscribe(
+				(data) => {
+					this.postingReview = false;
+				},
+				(err) => {
+					this.postingReview = false;
+				}
+			);
+		} else {
+			//update dislike -1
+			this._updateReviews('dislikes', false);
+			this.buzzApi.updateReview(this.data['_id'], true, 'dislike').subscribe(
+				(data) => {
+					this.postingReview = false;
+				},
+				(err) => {
+					this.postingReview = false;
+				}
+			);
+		}
+	}
+
+	_updateReviews(type: string, inc: boolean = true) {
+		if (inc) {
+			const newPostData = { ...this.data };
+			newPostData[type] += 1;
+			this.data = newPostData;
+		} else {
+			const newPostData = { ...this.data };
+			newPostData[type] -= 1;
+			this.data = newPostData;
+		}
 	}
 }

@@ -114,6 +114,10 @@
     background-color: rgba(255, 235, 59, 0.09);
 }
 
+.disable {
+    pointer-events: none;
+}
+
 @media(max-width: 660px) {
     #meta-email {
         width: calc(100% - 56px);

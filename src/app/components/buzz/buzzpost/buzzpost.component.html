@@ -32,7 +32,7 @@
 				</button>
 			</div>
 			<div class="control">
-				<button id="like" [ngClass]="{ 'fab fab-sm': true, 'text-danger': liked }" (click)="toggleLike()">
+				<button id="like" [ngClass]="{ 'fab fab-sm': true, 'text-danger': liked, 'disable': postingReview}" (click)="toggleLike()">
 					<i *ngIf="liked" class="fas fa-heart"></i>
 					<i *ngIf="!liked" class="fal fa-heart"></i>
 					<span>{{ data.likes }}</span>
@@ -41,7 +41,7 @@
 			<div class="control">
 				<button
 					id="dislike"
-					[ngClass]="{ 'fab fab-sm': true, 'text-yellow': disliked }"
+					[ngClass]="{ 'fab fab-sm': true, 'text-yellow': disliked, 'disable': postingReview }"
 					(click)="toggleDislike()"
 				>
 					<i *ngIf="disliked" class="fas fa-frown"></i>
