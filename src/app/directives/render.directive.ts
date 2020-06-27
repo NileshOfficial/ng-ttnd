@@ -20,7 +20,6 @@ export class RenderDirective implements OnInit, OnDestroy {
 	constructor(private vcRef: ViewContainerRef, private cfr: ComponentFactoryResolver) {}
 
 	ngOnInit(): void {
-		console.log(this.data);
 		this.renderComponent();
 	}
 
