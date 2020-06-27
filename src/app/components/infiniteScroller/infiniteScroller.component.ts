@@ -30,7 +30,6 @@ export class InfiniteScrollerComponent implements OnInit {
 			this.showLoader = true;
 			this.dataService.get(this.subscribeToArgs, this.skip, this.limit).subscribe(
 				(data) => {
-					console.log(data);
 					this.showLoader = false;
 					this.data.push(...data);
 					this.skip += this.limit;

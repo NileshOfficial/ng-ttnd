@@ -6,5 +6,5 @@
 	(scrolled)="onScroll()"
 	[scrollWindow]="false"
 >
-	<ng-template [render]="repeat" *ngFor="let i of data">{{ i }}</ng-template>
+	<ng-template [render]="repeat" [data]="i" *ngFor="let i of data"></ng-template>
 </div>
