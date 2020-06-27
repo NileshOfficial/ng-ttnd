@@ -7,4 +7,10 @@
 	[scrollWindow]="false"
 >
 	<ng-template [render]="repeat" [data]="i" *ngFor="let i of data"></ng-template>
+	<div class="loader" *ngIf="showLoader || err">
+		<ttnd-spinner *ngIf="showLoader"></ttnd-spinner>
+		<span class="text-danger message" *ngIf="err">
+			Something went wrong, try refreshing the page or contact the administrator.
+		</span>
+	</div>
 </div>

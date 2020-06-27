@@ -4,3 +4,13 @@
     overflow: auto;
     border-radius: 8px;
 }
+
+.loader {
+    width: 100%;
+    min-height: 100px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Type } from '@angular/core';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'ttnd-infinite',
 	templateUrl: './infiniteScroller.component.html',
-	styleUrls: ['./infiniteScroller.component.css']
+	styleUrls: ['./infiniteScroller.component.css', '../common.css']
 })
 export class InfiniteScrollerComponent implements OnInit {
 	@Input() repeat: Type<unknown>;
@@ -15,6 +15,7 @@ export class InfiniteScrollerComponent implements OnInit {
 	private subscription: Subscription = null;
 
 	showLoader: boolean = true;
+	err: boolean = false;
 	data: Array<any> = [];
 	stopScrolling: boolean = false;
 	skip: number = 0;
@@ -39,6 +40,7 @@ export class InfiniteScrollerComponent implements OnInit {
 				},
 				(err) => {
 					console.log(err);
+					this.err = true;
 					this.showLoader = false;
 				}
 			);
