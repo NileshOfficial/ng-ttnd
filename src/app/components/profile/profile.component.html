@@ -22,30 +22,30 @@
 		<button class="fab-icon fab-icon-md" (click)="openEditForm()">
 			<i class="fal fa-pencil"></i>
 		</button>
-    </div>
-    <ttnd-modal [showUp]="editProfile" [close]="closeEditForm.bind(this)">
-        <form class="card" modal-content [formGroup]="editProfileForm">
-            <h4>Edit Profile</h4>
-            <div class="input">
-                <label for="name">Name</label>
-                <input type="text" id="name" placeholder="Name">
-            </div>
-            <div class="input">
-                <label for="">Contact</label>
-                <input type="tel" placeholder="Contact">
-            </div>
-            <div class="input">
-                <label for="">Date of birth</label>
-                <input type="date" defaultFont placeholder="Date of birth">
-            </div>
-            <div class="controls">
-                <button type="submit" class="btn btn-primary">
+	</div>
+	<div class="overlay fullscreen" *modal="editProfile">
+		<form class="card" [formGroup]="editProfileForm" *ngIf="editProfile">
+			<h4>Edit Profile</h4>
+			<div class="input">
+				<label for="name">Name</label>
+				<input type="text" id="name" placeholder="Name" formControlName="name" />
+			</div>
+			<div class="input">
+				<label for="">Contact</label>
+				<input type="tel" placeholder="Contact" formControlName="contact" />
+			</div>
+			<div class="input">
+				<label for="">Date of birth</label>
+				<input type="date" defaultFont placeholder="Date of birth" formControlName="dob" />
+			</div>
+			<div class="controls">
+				<button type="submit" class="btn btn-primary">
 					update
 				</button>
 				<button type="reset" class="btn btn-danger" (click)="closeEditForm()">
 					discard
 				</button>
-            </div>
-        </form>
-    </ttnd-modal>
+			</div>
+		</form>
+	</div>
 </div>
