@@ -1,0 +1,66 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.profile {
+    margin-top: 3rem;
+    padding: 5rem;
+}
+
+.profile .image {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 2rem auto;
+    position: relative;
+    border-radius: 50%;
+}
+
+.profile .image .file-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.profile .image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.profile .info {
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.profile .info > span {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+}
+
+.profile .info > span:first-child {
+    font-size: 2.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-transform: capitalize;
+}
+
+.profile .info > span:first-child .text-primary {
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-transform: none;
+}
+
+.profile .info .fab-icon {
+    position: absolute;
+    top: -40px;
+    right: -48px;
+}

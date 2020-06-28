@@ -83,6 +83,41 @@
 	color: #2e3034;
 }
 
+.fab-icon {
+	color: #dadce0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.2s ease-in-out;
+	border: none;
+	cursor: pointer;
+	border-radius: 500px;
+	outline: none;
+	background: transparent;
+}
+
+.fab-icon-sm {
+	width: 40px;
+	height: 40px;
+	font-size: 1.6rem;
+}
+
+.fab-icon-md {
+	width: 48px;
+	height: 48px;
+	font-size: 2.0rem;
+}
+
+.fab-icon-lg {
+	width: 56px;
+	height: 56px;
+	font-size: 2.4rem;
+}
+
+.fab-icon:hover {
+	background-color: rgba(255, 255, 255, 0.09);
+}
+
 .btn {
 	color: #dadce0;
 	transition: 0.2s ease-in-out;
@@ -140,7 +175,8 @@
     border-radius: 50%;
     font-size: 2rem;
     text-align: center;
-    line-height: 42px;
+	line-height: 42px;
+	cursor: pointer;
 }
 
 .file-btn label:hover {
