@@ -1,9 +1,9 @@
 <div *ngIf="showUp" class="overlay">
-    <button class="fab fab-md close">
+    <button class="fab fab-md close" (click)="hideModal()">
         <i class="fal fa-times"></i>
     </button>
 
-    <div class="content" [clickaway]="hideModal.bind(this)">
+    <div class="content">
         <ng-content select="[modal-content]"></ng-content>
     </div>
 </div>
