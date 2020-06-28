@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
     this.editProfileForm = new FormGroup({
 			name: new FormControl(this.loggedInUserProfile.name || ''),
 			contact: new FormControl(this.loggedInUserProfile.contact || ''),
-			dob: new FormControl(this.loggedInUserProfile.dob || '')
+			dob: new FormControl(/**this.loggedInUserProfile.dob**/ new Date().toISOString().substring(0, 10) || '')
 		});
 	}
 

@@ -25,6 +25,9 @@
 	</div>
 	<div class="overlay fullscreen" *modal="editProfile">
 		<form class="card" [formGroup]="editProfileForm" *ngIf="editProfile">
+            <button class="fab-icon fab-icon-sm close" (click)="closeEditForm()">
+                <i class="fal fa-times"></i>
+            </button>
 			<h4>Edit Profile</h4>
 			<div class="input">
 				<label for="name">Name</label>
