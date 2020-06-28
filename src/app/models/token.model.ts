@@ -6,3 +6,15 @@ export interface LoginToken {
     token_type: string;
     id_token: string;
 }
+
+export interface UserProfile {
+    role: string;
+    id: string;
+    name: string;
+    email: string;
+    picture: string;
+    department: string;
+    role_code: string;
+    contact: string,
+    dob: string;
+}
