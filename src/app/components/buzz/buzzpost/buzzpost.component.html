@@ -18,11 +18,12 @@
 		<div class="description text-default">
 			{{ data.description }}
 		</div>
-		<div class="images" *ngIf="previewImages.length > 0">
-			<div class="image" *ngFor="let image of previewImages">
-				<img src="{{ image }}" alt="" srcset="" />
-			</div>
-		</div>
+		<ttnd-carousel
+			class="images"
+			*ngIf="data.images.length > 0"
+			modal-content
+			[images]="data.images"
+		></ttnd-carousel>
 		<span class="date text-light">{{ data.date | duration }}</span>
 		<div class="reactions">
 			<div class="control">
@@ -32,7 +33,11 @@
 				</button>
 			</div>
 			<div class="control">
-				<button id="like" [ngClass]="{ 'fab fab-sm': true, 'text-danger': liked, 'disable': postingReview}" (click)="toggleLike()">
+				<button
+					id="like"
+					[ngClass]="{ 'fab fab-sm': true, 'text-danger': liked, disable: postingReview }"
+					(click)="toggleLike()"
+				>
 					<i *ngIf="liked" class="fas fa-heart"></i>
 					<i *ngIf="!liked" class="fal fa-heart"></i>
 					<span>{{ data.likes }}</span>
@@ -41,7 +46,7 @@
 			<div class="control">
 				<button
 					id="dislike"
-					[ngClass]="{ 'fab fab-sm': true, 'text-yellow': disliked, 'disable': postingReview }"
+					[ngClass]="{ 'fab fab-sm': true, 'text-yellow': disliked, disable: postingReview }"
 					(click)="toggleDislike()"
 				>
 					<i *ngIf="disliked" class="fas fa-frown"></i>

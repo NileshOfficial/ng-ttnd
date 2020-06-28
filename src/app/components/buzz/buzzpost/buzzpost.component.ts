@@ -31,9 +31,10 @@ export class BuzzPostComponent implements OnInit {
 
 	liked: boolean = true;
 	disliked: boolean = true;
-  previewImages: Array<string> = [];
+	previewImages: Array<string> = [];
 
-  postingReview: boolean = false;
+	postingReview: boolean = false;
+	imagesModal: boolean = false;
 
 	constructor(private buzzApi: BuzzapiService) {}
 
@@ -126,5 +127,14 @@ export class BuzzPostComponent implements OnInit {
 			newPostData[type] -= 1;
 			this.data = newPostData;
 		}
+	}
+
+	showImages() {
+		console.log("here");
+		this.imagesModal = true;
+	}
+
+	closeImages() {
+		this.imagesModal = false;
 	}
 }
