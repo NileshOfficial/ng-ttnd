@@ -285,6 +285,10 @@ form.card {
 	padding: 1rem 2rem;
 }
 
+form {
+	position: relative;
+}
+
 form h4 {
 	margin-bottom: 2rem;
 }
@@ -318,6 +322,12 @@ form textarea {
 form .controls {
 	display: flex;
 	justify-content: flex-end;
+}
+
+form .close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
 }
 
 .overlay {
