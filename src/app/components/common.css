@@ -331,3 +331,8 @@ form .controls {
 	align-items: center;
 	justify-content: center;
 }
+
+.overlay.fullscreen {
+	position: fixed;
+	z-index: 3;
+}
