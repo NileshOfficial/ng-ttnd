@@ -28,6 +28,7 @@ import { SpinnerComponent } from './components/genericComponents/spinner/spinner
 import { DurationPipe } from './pipes/duration.pipe';
 import { CarouselComponent } from './components/genericComponents/carousel/carousel.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ModalDirective } from './directives/modal.directive';
 
 @NgModule({
 	declarations: [
@@ -51,7 +52,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 		SpinnerComponent,
 		DurationPipe,
 		CarouselComponent,
-		ProfileComponent
+		ProfileComponent,
+		ModalDirective
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, InfiniteScrollModule, ReactiveFormsModule],
 	providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestHeaderService, multi: true }],
