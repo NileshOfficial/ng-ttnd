@@ -26,6 +26,7 @@ import { InfiniteScrollerComponent } from './components/infiniteScroller/infinit
 import { RequestHeaderService } from './services/utils/interceptor.service';
 import { SpinnerComponent } from './components/genericComponents/spinner/spinner.component';
 import { DurationPipe } from './pipes/duration.pipe';
+import { CarouselComponent } from './components/genericComponents/carousel/carousel.component';
 
 @NgModule({
 	declarations: [
@@ -47,7 +48,8 @@ import { DurationPipe } from './pipes/duration.pipe';
 		RenderDirective,
 		InfiniteScrollerComponent,
 		SpinnerComponent,
-		DurationPipe
+		DurationPipe,
+		CarouselComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, InfiniteScrollModule, ReactiveFormsModule],
 	providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestHeaderService, multi: true }],

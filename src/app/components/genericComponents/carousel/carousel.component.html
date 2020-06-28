@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="image" *ngFor="let image of images; let idx = index" [ngClass]="{visible: current === idx}">
+        <img src={{image}} alt="imge">
+    </div>
+    <a class="controls prev" (click)="prev()" *ngIf="current !== 0">
+        <i class="far fa-chevron-left"></i>
+    </a>
+    <a class="controls next" (click)="next()" *ngIf="current !== images.length - 1">
+        <i class="far fa-chevron-right"></i>
+    </a>
+</div>
