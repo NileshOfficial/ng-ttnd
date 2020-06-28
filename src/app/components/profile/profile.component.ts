@@ -9,7 +9,17 @@ import { FormGroup } from '@angular/forms';
 export class ProfileComponent implements OnInit {
   editProfileForm: FormGroup = new FormGroup({});
 
+  editProfile: boolean = false;
+
 	constructor() {}
 
-	ngOnInit(): void {}
+  ngOnInit(): void {}
+
+  openEditForm(): void {
+    this.editProfile = true;
+  }
+
+  closeEditForm(): void {
+    this.editProfile = false;
+  }
 }

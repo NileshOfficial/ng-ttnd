@@ -19,11 +19,11 @@
 		<span>MEAN</span>
 		<span>Contact: 7042269375</span>
 		<span>Date of Birth: 09/02/1999</span>
-		<button class="fab-icon fab-icon-md">
+		<button class="fab-icon fab-icon-md" (click)="openEditForm()">
 			<i class="fal fa-pencil"></i>
 		</button>
     </div>
-    <ttnd-modal>
+    <ttnd-modal [showUp]="editProfile" [close]="closeEditForm.bind(this)">
         <form class="card" modal-content [formGroup]="editProfileForm">
             <h4>Edit Profile</h4>
             <div class="input">
@@ -42,7 +42,7 @@
                 <button type="submit" class="btn btn-primary">
 					update
 				</button>
-				<button type="reset" class="btn btn-danger">
+				<button type="reset" class="btn btn-danger" (click)="closeEditForm()">
 					discard
 				</button>
             </div>
