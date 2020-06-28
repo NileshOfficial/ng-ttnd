@@ -285,6 +285,15 @@ form.card {
 	padding: 1rem 2rem;
 }
 
+form h4 {
+	margin-bottom: 2rem;
+}
+
+form .input > label{
+	font-size: 1.2rem;
+	margin-bottom: 2rem;
+}
+
 form input,
 form textarea {
 	width: 100%;
