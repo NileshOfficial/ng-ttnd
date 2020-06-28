@@ -64,3 +64,11 @@
     top: -40px;
     right: -48px;
 }
+
+form.card {
+    padding: 3rem !important;
+}
+
+form .input {
+    margin-bottom: 3rem;
+}
