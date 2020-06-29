@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { buzzForm } from './buzz.form';
+import { getBuzzForm } from './buzz.form';
 import { FormGroup } from '@angular/forms';
 import { BuzzapiService } from '../../services/apis/buzzapi.service';
 import { BuzzPostComponent } from './buzzpost/buzzpost.component';
@@ -13,7 +13,7 @@ export class BuzzComponent implements OnInit {
 
 	readonly buzzPostComponent = BuzzPostComponent;
 
-	buzzForm: FormGroup = buzzForm;
+	buzzForm: FormGroup = getBuzzForm();
 	allowedFileType: Array<string> = ['image/png', 'image/jpeg'];
 	uploadedFiles: Array<File> = [];
 

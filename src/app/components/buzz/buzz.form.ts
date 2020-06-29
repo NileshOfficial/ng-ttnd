@@ -7,8 +7,10 @@ function verifyCategory(category: FormControl): { [k: string]: boolean } {
 	else return { invalidCategory: true };
 }
 
-export const buzzForm = new FormGroup({
-	'category': new FormControl('', [Validators.required, verifyCategory]),
-	'description': new FormControl(null, [Validators.required]),
-	'title': new FormControl(null)
-});
+export const getBuzzForm = ( populate: any = {} ): FormGroup => {
+	return new FormGroup({
+		'category': new FormControl(populate.category || '', [Validators.required, verifyCategory]),
+		'description': new FormControl(populate.description || null, [Validators.required]),
+		'title': new FormControl(populate.title || null)
+	});
+}
