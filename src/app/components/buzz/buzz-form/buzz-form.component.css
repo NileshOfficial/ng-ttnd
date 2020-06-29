@@ -1,0 +1,33 @@
+.form-container {
+	flex: 1;
+	margin-right: 3rem;
+}
+
+form {
+	position: relative;
+	width: 100%;
+}
+
+form #title {
+	width: calc(100% - 48px);
+	font-size: 2.2rem;
+}
+
+form #description {
+	font-size: 1.6rem;
+	margin-bottom: 1.5rem;
+}
+
+form .fab {
+	position: relative;
+	top: 3px;
+}
+
+.dropdown {
+	margin-right: auto;
+	margin-left: 0;
+}
+
+.ng-touched.ng-invalid {
+	box-shadow: 0 0 4px #f00;
+}
