@@ -4,6 +4,8 @@ import { AuthCallbackComponent } from './components/login-board/auth-callback/au
 import { LoginBoardComponent } from './components/login-board/login-board.component';
 import { HomeComponent } from './components/home/home.component';
 import { BuzzComponent } from './components/buzz/buzz.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { ProfileComponent } from './components/profile-page/profile/profile.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/auth/login', pathMatch: 'full' },
@@ -17,7 +19,11 @@ const routes: Routes = [
 	{
 		path: 'home',
 		component: HomeComponent,
-		children: [{ path: 'buzz', component: BuzzComponent }]
+		children: [
+			{ path: 'buzz', component: BuzzComponent },
+			{ path: 'myprofile', component: ProfilePageComponent },
+			{ path: 'profile', component: ProfilePageComponent }
+		]
 	}
 ];
 
