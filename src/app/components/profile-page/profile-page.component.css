@@ -1,3 +1,7 @@
 .header {
     margin-bottom: 3rem;
 }
+
+.active {
+    background-color: rgba(0, 0, 0, 0.09) !important;
+}
