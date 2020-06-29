@@ -30,7 +30,6 @@ import { CarouselComponent } from './components/genericComponents/carousel/carou
 import { ProfileComponent } from './components/profile-page/profile/profile.component';
 import { ModalDirective } from './directives/modal.directive';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
-import { BuzzFormComponent } from './components/buzz/buzz-form/buzz-form.component';
 
 @NgModule({
 	declarations: [
@@ -56,8 +55,7 @@ import { BuzzFormComponent } from './components/buzz/buzz-form/buzz-form.compone
 		CarouselComponent,
 		ProfileComponent,
 		ModalDirective,
-		ProfilePageComponent,
-		BuzzFormComponent
+		ProfilePageComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, InfiniteScrollModule, ReactiveFormsModule],
 	providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestHeaderService, multi: true }],
