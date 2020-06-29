@@ -152,6 +152,10 @@
 	color: #dc004e;
 }
 
+.btn-dark:hover {
+	background-color: rgba(0, 0, 0, 0.09);
+}
+
 .link-heavy {
 	cursor: pointer;
 	font-weight: 500;
