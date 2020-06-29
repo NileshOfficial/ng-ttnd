@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoginToken } from '../../models/token.model';
+import { LoginToken, UserProfile } from '../../models/token.model';
 
 const storeToken = (token: LoginToken): void => {
 	localStorage.setItem('token', JSON.stringify(token));
@@ -36,16 +36,20 @@ export class LoginDataService {
 	}
 
 	set loginToken(token: LoginToken) {
-    this.token = token;
-    storeToken(this.token);
-  }
+		this.token = token;
+		storeToken(this.token);
+	}
 
-  deleteToken(): void {
-    this.token = null;
-    deleteToken();
-  }
+	deleteToken(): void {
+		this.token = null;
+		deleteToken();
+	}
 
-  deleteLoginMode() {
-	  localStorage.removeItem('mode');
-  }
+	deleteLoginMode() {
+		localStorage.removeItem('mode');
+	}
+
+	idTokenData(): UserProfile {
+		return JSON.parse(atob(this.loginToken.id_token.split('.')[1]));
+	}
 }
