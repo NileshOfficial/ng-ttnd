@@ -11,3 +11,4 @@ export const COMPLAINT_POST: string = getEndpoint('complaint');
 export const UPDATE_LIKE: string = getEndpoint('buzz/like');
 export const UPDATE_DISLIKE: string = getEndpoint('buzz/dislike');
 export const USER: string = getEndpoint('user');
+export const USER_PICTURE: string = getEndpoint('user/picture');
