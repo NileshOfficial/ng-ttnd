@@ -27,7 +27,7 @@ import { RequestHeaderService } from './services/utils/interceptor.service';
 import { SpinnerComponent } from './components/genericComponents/spinner/spinner.component';
 import { DurationPipe } from './pipes/duration.pipe';
 import { CarouselComponent } from './components/genericComponents/carousel/carousel.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './components/profile-page/profile/profile.component';
 import { ModalDirective } from './directives/modal.directive';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 
