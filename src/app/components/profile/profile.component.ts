@@ -24,6 +24,10 @@ export class ProfileComponent implements OnInit {
 	allowEditProfile: boolean = false;
 	pictureError: boolean = false;
 	pictureErrorMsg: string = '';
+	updatingProfile: boolean = false;
+	profileError: boolean = false;
+	profileErrorMsg: string = '';
+	dateLimit: string = new Date().toISOString().substring(0, 10);
 
 	constructor(private authData: LoginDataService, private userApi: UserapiService, private router: Router) {
 		const routerStateData = this.router.getCurrentNavigation().extras.state;
@@ -56,10 +60,37 @@ export class ProfileComponent implements OnInit {
 		this.editProfileForm = new FormGroup({
 			name: new FormControl(this.loggedInUserProfile.name || ''),
 			contact: new FormControl(this.loggedInUserProfile.contact || ''),
-			dob: new FormControl(/**this.loggedInUserProfile.dob**/ new Date().toISOString().substring(0, 10) || '')
+			dob: new FormControl(this.loggedInUserProfile.dob || '')
 		});
 
 		this.editProfile = true;
+	}
+
+	submitProfileUpdate() {
+		this.profileError = false;
+		if(this.editProfileForm.valid) {
+			this.updatingProfile = true;
+			const update = this.editProfileForm.value;
+			if(!update.name)
+				delete update.name;
+			this.userApi.updateProfile(update).subscribe(
+				data => {
+					this.updatingProfile = false;
+					const token: LoginToken = this.authData.loginToken;
+					token.id_token = data.id_token;
+					this.authData.loginToken = token;
+					console.log(token);
+					this.closeEditForm();
+					this.fetchProfile();
+				},
+				err => {
+					console.log(err.error);
+					this.updatingProfile = false;
+					this.profileError = true;
+					this.profileErrorMsg = err.error.message;
+				}
+			)
+		}
 	}
 
 	closeEditForm(): void {
