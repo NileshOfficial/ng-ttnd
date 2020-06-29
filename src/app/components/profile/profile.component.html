@@ -1,54 +1,62 @@
-<div class="header differentiate-bottom">
-	<h4>Nilesh Kumar</h4>
-</div>
-<div class="profile card">
-	<div class="image">
-		<div class="file-btn">
-			<label for="profilePic">
-				<i class="fal fa-camera"></i>
-			</label>
-			<input id="profilePic" type="file" />
+<div>
+	<div class="header differentiate-bottom">
+		<h4>Nilesh Kumar</h4>
+	</div>
+	<div class="card spinner" *ngIf="!userProfile">
+		<ttnd-spinner></ttnd-spinner>
+	</div>
+	<div class="profile card" *ngIf="userProfile">
+		<div class="image">
+			<div class="file-btn" *ngIf="allowEditProfile">
+				<label for="profilePic">
+					<i class="fal fa-camera"></i>
+				</label>
+				<input id="profilePic" type="file" />
+			</div>
+			<img src="{{ userProfile.picture }}" />
 		</div>
-		<img src="../../../assets/images/home-banner.jpg" />
-	</div>
-	<div class="info text-default">
-		<span>
-			Nilesh Kumar
-			<span> (<span class="text-primary">nilesh.kumar@tothenew.com</span>) </span>
-		</span>
-		<span>MEAN</span>
-		<span>Contact: 7042269375</span>
-		<span>Date of Birth: 09/02/1999</span>
-		<button class="fab-icon fab-icon-md" (click)="openEditForm()">
-			<i class="fal fa-pencil"></i>
-		</button>
-	</div>
-	<div class="overlay fullscreen" *modal="editProfile">
-		<form class="card" [formGroup]="editProfileForm" *ngIf="editProfile">
-            <button class="fab-icon fab-icon-sm close" (click)="closeEditForm()">
-                <i class="fal fa-times"></i>
-            </button>
-			<h4>Edit Profile</h4>
-			<div class="input">
-				<label for="name">Name</label>
-				<input type="text" id="name" placeholder="Name" formControlName="name" />
-			</div>
-			<div class="input">
-				<label for="">Contact</label>
-				<input type="tel" placeholder="Contact" formControlName="contact" />
-			</div>
-			<div class="input">
-				<label for="">Date of birth</label>
-				<input type="date" defaultFont placeholder="Date of birth" formControlName="dob" />
-			</div>
-			<div class="controls">
-				<button type="submit" class="btn btn-primary">
-					update
+		<div class="info text-default">
+			<span>
+				{{ userProfile.name }}
+				<span>
+					(<span class="text-primary">{{ userProfile.email }}</span
+					>)
+				</span>
+			</span>
+			<span>Department: {{ userProfile.department ? userProfile.department.name : 'not assigned'  }}</span>
+			<span>Contact: {{ userProfile.contact ? userProfile.contact : 'not updated' }}</span>
+			<span>Date of Birth: {{ userProfile.dob ? userProfile.dob : 'not updated' }}</span>
+			<button class="fab-icon fab-icon-md" (click)="openEditForm()" *ngIf="allowEditProfile">
+				<i class="fal fa-pencil"></i>
+			</button>
+		</div>
+		<div class="overlay fullscreen" *modal="editProfile && allowEditProfile">
+			<form class="card" [formGroup]="editProfileForm" *ngIf="editProfile">
+				<button class="fab-icon fab-icon-sm close" (click)="closeEditForm()">
+					<i class="fal fa-times"></i>
 				</button>
-				<button type="reset" class="btn btn-danger" (click)="closeEditForm()">
-					discard
-				</button>
-			</div>
-		</form>
+				<h4>Edit Profile</h4>
+				<div class="input">
+					<label for="name">Name</label>
+					<input type="text" id="name" placeholder="Name" formControlName="name" />
+				</div>
+				<div class="input">
+					<label for="">Contact</label>
+					<input type="tel" placeholder="Contact" formControlName="contact" />
+				</div>
+				<div class="input">
+					<label for="">Date of birth</label>
+					<input type="date" defaultFont placeholder="Date of birth" formControlName="dob" />
+				</div>
+				<div class="controls">
+					<button type="submit" class="btn btn-primary">
+						update
+					</button>
+					<button type="reset" class="btn btn-danger" (click)="closeEditForm()">
+						discard
+					</button>
+				</div>
+			</form>
+		</div>
 	</div>
 </div>
