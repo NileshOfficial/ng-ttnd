@@ -2,6 +2,56 @@
 	<h4>Notes</h4>
 </div>
 <div class="content">
-	<ttnd-buzz-form></ttnd-buzz-form>
+	<div class="form-container">
+		<form class="create card" [formGroup]="buzzForm" (ngSubmit)="createBuzz()">
+			<span *ngIf="invalidFile" class="text-danger message"
+				>Maximum 10 count, and only jpeg and png files are allowed each of maximum 5MB.</span
+			>
+			<input formControlName="title" id="title" type="text" placeholder="Title" name="title" />
+			<div class="file-btn">
+				<label for="fileInput" title="maximum 10 images, jpeg and png files, maximum 5MB">
+					<i class="fal fa-camera-alt"></i>
+				</label>
+				<input
+					id="fileInput"
+					type="file"
+					multiple
+					accept="{{ allowedFileType.join() }}"
+					(change)="fileChange($event)"
+				/>
+			</div>
+			<textarea
+				defaultFont
+				multiline
+				rows="1"
+				id="description"
+				type="text"
+				placeholder="Post your thoughts..."
+				name="description"
+				formControlName="description"
+			></textarea>
+			<div class="controls">
+				<div class="dropdown">
+					<select defaultFont formControlName="category">
+						<option value="" [defaultSelected]="true">Select Category</option>
+						<option [ngValue]="'activity'">Activity</option>
+						<option [ngValue]="'lost and found'">Lost and Found</option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-primary">
+					add
+				</button>
+				<button type="reset" class="btn btn-danger" (click)="reset()">
+					discard
+				</button>
+			</div>
+			<div class="overlay" *ngIf="err || postingBuzz">
+				<ttnd-spinner *ngIf="postingBuzz"></ttnd-spinner>
+				<span class="text-danger message" *ngIf="err"
+					>Something went wrong, try refreshing the page or contact administrator.</span
+				>
+			</div>
+		</form>
+	</div>
 	<ttnd-infinite [dataService]="api" [limit]="5" [repeat]="buzzPostComponent" style="flex: 1;"></ttnd-infinite>
 </div>

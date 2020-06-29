@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { buzzForm } from '../buzz.form';
 import { FormGroup } from '@angular/forms';
 import { BuzzapiService } from 'src/app/services/apis/buzzapi.service';
@@ -9,6 +9,10 @@ import { BuzzapiService } from 'src/app/services/apis/buzzapi.service';
 	styleUrls: ['./buzz-form.component.css', '../../common.css']
 })
 export class BuzzFormComponent implements OnInit {
+  @Input() autoFillData: any = {};
+  @Output() emitFormSubmitData: any = new EventEmitter<any>();
+  @Output() emitFormDiscard: any = new EventEmitter<any>();
+
 	buzzForm: FormGroup = buzzForm;
 	allowedFileType: Array<string> = ['image/png', 'image/jpeg'];
 	uploadedFiles: Array<File> = [];
@@ -22,7 +26,7 @@ export class BuzzFormComponent implements OnInit {
 	ngOnInit(): void {}
 
 	createBuzz() {
-		if (this.buzzForm.valid) {
+    if (this.buzzForm.valid && !this.invalidFile) {
 			this.showLoader();
 			const data = this.prepareDataToPost();
 			this.api.postBuzz(data).subscribe(
@@ -39,6 +43,10 @@ export class BuzzFormComponent implements OnInit {
 			);
 		}
 	}
+
+  emitFormData() {
+    this.emitFormData()
+  }
 
 	fileChange(event) {
 		this.invalidFile = false;
@@ -84,5 +92,10 @@ export class BuzzFormComponent implements OnInit {
 	hideLoader(): void {
 		this.postingBuzz = false;
 		this.err = false;
-	}
+  }
+
+  resetForm() {
+    this.invalidFile = false;
+    this.uploadedFiles = [];
+  }
 }
