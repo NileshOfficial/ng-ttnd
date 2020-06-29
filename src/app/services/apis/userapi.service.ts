@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { USER } from '../../config/uri.conf';
+import { USER, USER_PICTURE } from '../../config/uri.conf';
 import { User } from 'src/app/models/user.model';
+import { LoginToken } from 'src/app/models/token.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -19,5 +20,9 @@ export class UserapiService {
 
 		const params = new HttpParams({ fromObject: constructedQuery });
 		return this.http.get<User>(USER, { params: params });
+	}
+
+	updatePicture(picture: FormData): Observable<LoginToken> {
+		return this.http.patch<LoginToken>(USER_PICTURE, picture);
 	}
 }
