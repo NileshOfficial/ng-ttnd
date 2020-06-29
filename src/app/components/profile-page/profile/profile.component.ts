@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LoginDataService } from 'src/app/services/dataServices/auth.service';
 import { UserProfile, LoginToken } from '../../../models/token.model';
 import { UserapiService } from 'src/app/services/apis/userapi.service';
-import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { PROFILE_PIC } from '../../../config/uri.conf';
 
@@ -13,15 +12,14 @@ import { PROFILE_PIC } from '../../../config/uri.conf';
 	styleUrls: ['./profile.component.css', '../../common.css']
 })
 export class ProfileComponent implements OnInit {
-	private loggedInUserProfile: UserProfile = null;
-	private userEmail: string = 'nilesh22.a67@gmail.com';
+	@Input() userEmail: string = '';
+	@Input() allowEditProfile: boolean = false;
 
+	userProfile: User = null;
 	allowedFileType: Array<string> = ['image/png', 'image/jpeg'];
 	editProfileForm: FormGroup;
-	userProfile: User = null;
 
 	editProfile: boolean = false;
-	allowEditProfile: boolean = false;
 	pictureError: boolean = false;
 	pictureErrorMsg: string = '';
 	updatingProfile: boolean = false;
@@ -29,17 +27,9 @@ export class ProfileComponent implements OnInit {
 	profileErrorMsg: string = '';
 	dateLimit: string = new Date().toISOString().substring(0, 10);
 
-	constructor(private authData: LoginDataService, private userApi: UserapiService, private router: Router) {
-		const routerStateData = this.router.getCurrentNavigation().extras.state;
-
-		if (routerStateData) {
-			this.userEmail = routerStateData.email;
-		}
-	}
+	constructor(private authData: LoginDataService, private userApi: UserapiService) {}
 
 	ngOnInit(): void {
-		this.loggedInUserProfile = this.getUserProfileFromToken(this.authData.loginToken.id_token);
-		if (this.userEmail === this.loggedInUserProfile.email) this.allowEditProfile = true;
 		this.fetchProfile();
 	}
 
@@ -58,9 +48,9 @@ export class ProfileComponent implements OnInit {
 
 	openEditForm(): void {
 		this.editProfileForm = new FormGroup({
-			name: new FormControl(this.loggedInUserProfile.name || ''),
-			contact: new FormControl(this.loggedInUserProfile.contact || ''),
-			dob: new FormControl(this.loggedInUserProfile.dob || '')
+			name: new FormControl(this.userProfile.name || ''),
+			contact: new FormControl(this.userProfile.contact || ''),
+			dob: new FormControl(this.userProfile.dob || '')
 		});
 
 		this.editProfile = true;
@@ -68,13 +58,12 @@ export class ProfileComponent implements OnInit {
 
 	submitProfileUpdate() {
 		this.profileError = false;
-		if(this.editProfileForm.valid) {
+		if (this.editProfileForm.valid) {
 			this.updatingProfile = true;
 			const update = this.editProfileForm.value;
-			if(!update.name)
-				delete update.name;
+			if (!update.name) delete update.name;
 			this.userApi.updateProfile(update).subscribe(
-				data => {
+				(data) => {
 					this.updatingProfile = false;
 					const token: LoginToken = this.authData.loginToken;
 					token.id_token = data.id_token;
@@ -83,13 +72,13 @@ export class ProfileComponent implements OnInit {
 					this.closeEditForm();
 					this.fetchProfile();
 				},
-				err => {
+				(err) => {
 					console.log(err.error);
 					this.updatingProfile = false;
 					this.profileError = true;
 					this.profileErrorMsg = err.error.message;
 				}
-			)
+			);
 		}
 	}
 
