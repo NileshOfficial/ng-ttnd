@@ -1,30 +1,30 @@
 <nav>
-    <div class="logo">
-        <div class="imageContainer">
-            <img src="../../../assets/images/rock.png" alt="rock.png" />
-        </div>
-        <span>Tasks</span>
-    </div>
-    <ul class="text-default">
-        <li [routerLink]="['/home/buzz']" routerLinkActive="text-primary">
-            <i class="fal fa-home"></i>
-            <span class="text">my feed</span>
-        </li>
-        <li>
-            <i class="fal fa-tags"></i>
-            <span class="text">my complaints</span>
-        </li>
-        <li>
-            <i class="fal fa-shield-check"></i>
-            <span class="text">resolve</span>
-        </li>
-        <li>
-            <i class="fal fa-crown"></i>
-            <span class="text">super</span>
-        </li>
-        <li>
-            <i class="fal fa-user-alt"></i>
-            <span class="text">my profile</span>
-        </li>
-    </ul>
+	<div class="logo">
+		<div class="imageContainer">
+			<img src="../../../assets/images/rock.png" alt="rock.png" />
+		</div>
+		<span>Tasks</span>
+	</div>
+	<ul class="text-default">
+		<li [routerLink]="['/home', 'buzz']" routerLinkActive="text-primary">
+			<i class="fal fa-home"></i>
+			<span class="text">my feed</span>
+		</li>
+		<li>
+			<i class="fal fa-tags"></i>
+			<span class="text">my complaints</span>
+		</li>
+		<li>
+			<i class="fal fa-shield-check"></i>
+			<span class="text">resolve</span>
+		</li>
+		<li>
+			<i class="fal fa-crown"></i>
+			<span class="text">super</span>
+		</li>
+		<li [routerLink]="['/home', 'myprofile']" [state]="{ email: userEmail }" routerLinkActive="text-primary">
+			<i class="fal fa-user-alt"></i>
+			<span class="text">my profile</span>
+		</li>
+	</ul>
 </nav>

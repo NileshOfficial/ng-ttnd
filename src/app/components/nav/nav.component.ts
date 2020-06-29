@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginDataService } from 'src/app/services/dataServices/auth.service';
 
 @Component({
   selector: 'ttnd-nav',
@@ -6,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css', '../common.css']
 })
 export class NavComponent implements OnInit {
-  personalNotes: Array<string> = ["notes 1", "notes 2", "notes 3"];
 
-  constructor() { }
+  userEmail: string = '';
+  constructor(private authData: LoginDataService) {}
 
   ngOnInit(): void {
+    this.userEmail = this.authData.idTokenData().email;
   }
 
 }
