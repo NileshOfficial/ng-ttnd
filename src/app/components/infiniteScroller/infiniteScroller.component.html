@@ -6,7 +6,7 @@
 	(scrolled)="onScroll()"
 	[scrollWindow]="false"
 >
-	<ng-template [render]="repeat" [data]="i" *ngFor="let i of data"></ng-template>
+	<ng-template [render]="repeat" [dataBindings]="getDataBindings(i)" *ngFor="let i of data"></ng-template>
 	<div class="loader" *ngIf="showLoader || err">
 		<ttnd-spinner *ngIf="showLoader"></ttnd-spinner>
 		<span class="text-danger message" *ngIf="err">

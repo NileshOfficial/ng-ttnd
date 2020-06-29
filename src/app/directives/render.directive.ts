@@ -13,7 +13,8 @@ import {
 })
 export class RenderDirective implements OnInit, OnDestroy {
 	@Input() readonly render: any = null;
-	@Input() data: any = null;
+	@Input() createIf: boolean = true;
+	@Input() dataBindings: { [k: string]: any } = {};
 	public component: ComponentRef<any>;
 	constructor(private vcRef: ViewContainerRef, private cfr: ComponentFactoryResolver) {}
 
@@ -22,12 +23,15 @@ export class RenderDirective implements OnInit, OnDestroy {
 	}
 
 	renderComponent(): void {
-		if (this.vcRef) {
+		if (this.vcRef && this.createIf) {
 			const componentFactory = this.cfr.resolveComponentFactory(this.render);
 			this.vcRef.clear();
 
 			this.component = this.vcRef.createComponent(componentFactory);
-			this.component.instance.data = this.data;
+			const bindings = Object.keys(this.dataBindings);
+
+			for (const binding of bindings)
+				this.component.instance[binding] = this.dataBindings[binding];
 		}
 	}
 

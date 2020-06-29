@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 export class InfiniteScrollerComponent implements OnInit {
 	@Input() repeat: Type<unknown>;
 	@Input() dataService: any;
+	@Input() dataBindings: { [k: string]: any } = {};
 	@Input() subscribeToArgs: any = {};
 	@Input() limit: number = 0;
 
@@ -45,5 +46,10 @@ export class InfiniteScrollerComponent implements OnInit {
 				}
 			);
 		}
+	}
+
+	getDataBindings(data: any) {
+		this.dataBindings.data = data;
+		return this.dataBindings;
 	}
 }
