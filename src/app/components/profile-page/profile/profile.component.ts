@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LoginDataService } from 'src/app/services/dataServices/auth.service';
-import { UserProfile, LoginToken } from '../../models/token.model';
+import { UserProfile, LoginToken } from '../../../models/token.model';
 import { UserapiService } from 'src/app/services/apis/userapi.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
-import { PROFILE_PIC } from '../../config/uri.conf';
+import { PROFILE_PIC } from '../../../config/uri.conf';
 
 @Component({
 	selector: 'ttnd-profile',
 	templateUrl: './profile.component.html',
-	styleUrls: ['./profile.component.css', '../common.css']
+	styleUrls: ['./profile.component.css', '../../common.css']
 })
 export class ProfileComponent implements OnInit {
 	private loggedInUserProfile: UserProfile = null;
