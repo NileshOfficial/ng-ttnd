@@ -50,7 +50,18 @@
                     Something went wrong, try refreshing the page or contact administrator.
                 </span>
 			</div>
-		</form>
+            <span class="message text-danger" *ngIf="invalidFile">
+                Maximum 5 files of size max size 5MB each are allowed of type plaintext, jpeg, png, pdf.
+            </span>
+        </form>
+        <div class="overlay fullscreen" *ngIf="complaintLogged">
+            <div class="complaint-id card">
+                <button class="fab-icon fab-icon-sm close" (click)="complaintLogged = false;">
+                    <i class="fal fa-times"></i>
+                </button>
+                Your complaint has been logged. Your referal id is <span class="text-primary link-heavy">{{referalId}}</span>.
+            </div>
+        </div>
 	</div>
 	<div></div>
 	<!-- <div class="posts card" style="flex: 1;">

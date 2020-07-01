@@ -30,3 +30,17 @@
 .ng-touched.ng-invalid {
     box-shadow: 0 0 4px #f00;
 }
+
+.complaint-id {
+    position: relative;
+    padding: 3rem 4rem;
+    text-align: center;
+    width: fit-content;
+    font-size: 1.6rem;
+}
+
+.complaint-id .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}

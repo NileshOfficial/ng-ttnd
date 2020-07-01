@@ -17,7 +17,10 @@ export class ComplaintsComponent implements OnInit {
 
 	invalidFile: boolean = false;
 	postingComplaint: boolean = false;
-	err: boolean = false;
+  err: boolean = false;
+
+  complaintLogged: boolean = false;
+  referalId: string = '';
 
 	constructor(private complaintApi: ComplaintapiService, private deptApi: DepartmentapiService) {}
 
@@ -48,7 +51,8 @@ export class ComplaintsComponent implements OnInit {
 					this.complaintForm.reset({
 						department: '',
 						title: ''
-					});
+          });
+          this.referalId = data.referenceToken;
 					this.hideLoader();
 				},
 				(err) => {
@@ -62,7 +66,7 @@ export class ComplaintsComponent implements OnInit {
 	fileChange(event) {
 		this.invalidFile = false;
 		const files: Array<File> = event.target.files;
-		if (files.length > 10) this.invalidFile = true;
+		if (files.length > 5) this.invalidFile = true;
 
 		for (const file of files) {
 			if (!this.allowedFileTypes.includes(file.type) || file.size >= 5 * 1024 * 1024) {
@@ -102,7 +106,8 @@ export class ComplaintsComponent implements OnInit {
 
 	hideLoader(): void {
 		this.postingComplaint = false;
-		this.err = false;
+    this.err = false;
+    this.complaintLogged = true;
 	}
 
 	reset() {
