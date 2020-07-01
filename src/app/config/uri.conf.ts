@@ -10,8 +10,10 @@ export const BUZZ_POST: string = getEndpoint('post');
 export const UPDATE_LIKE: string = getEndpoint('buzz/like');
 export const UPDATE_DISLIKE: string = getEndpoint('buzz/dislike');
 
-export const COMPLAINT_POST: string = getEndpoint('complaint');
-
 export const USER: string = getEndpoint('user');
 export const USER_PICTURE: string = getEndpoint('user/picture');
 export const PROFILE_PIC: string = getEndpoint('profile');
+
+export const DEPARTMENT: string = getEndpoint('department');
+
+export const COMPLAINT: string = getEndpoint('complaints');
