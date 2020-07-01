@@ -15,7 +15,10 @@ export class RenderDirective implements OnInit, OnDestroy {
 	@Input() readonly render: any = null;
 	@Input() createIf: boolean = true;
 	@Input() dataBindings: { [k: string]: any } = {};
+	@Input() eventBindings: { [k: string]: Function } = {}
+
 	public component: ComponentRef<any>;
+
 	constructor(private vcRef: ViewContainerRef, private cfr: ComponentFactoryResolver) {}
 
 	ngOnInit(): void {
@@ -28,10 +31,14 @@ export class RenderDirective implements OnInit, OnDestroy {
 			this.vcRef.clear();
 
 			this.component = this.vcRef.createComponent(componentFactory);
-			const bindings = Object.keys(this.dataBindings);
 
-			for (const binding of bindings)
+			const bindToKeys = Object.keys(this.dataBindings);
+			for (const binding of bindToKeys)
 				this.component.instance[binding] = this.dataBindings[binding];
+
+			const bindToEvents = Object.keys(this.eventBindings);
+			for(const event of bindToEvents)
+				this.component.instance[event].subscribe(this.eventBindings[event]);
 		}
 	}
 
