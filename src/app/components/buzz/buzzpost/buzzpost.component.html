@@ -1,7 +1,12 @@
 <div class="post bgDark differentiate-bottom">
-	<button class="fab-icon fab-icon-md edit" *ngIf="editable" (click)="showEditPopup()">
-		<i class="fal fa-pencil"></i>
-	</button>
+	<div class="edits" *ngIf="editable">
+		<button class="fab-icon fab-icon-md" (click)="showEditPopup()">
+			<i class="fal fa-pencil"></i>
+		</button>
+		<button class="fab-icon fab-icon-md" (click)="deleteBuzz()">
+			<i class="fal fa-trash"></i>
+		</button>
+	</div>
 	<div class="postHeader">
 		<div class="userImg">
 			<img src="{{ data.user.picture }}" alt="" srcset="" />
@@ -61,5 +66,5 @@
 	</div>
 </div>
 <div class="overlay fullscreen" *ngIf="showEditForm && editable">
-	<ttnd-edit-buzz (close)="hideEditPopup()" [data]="editFormData"></ttnd-edit-buzz>
+	<ttnd-edit-buzz (submitted)="hideEditPopup()" (close)="hideEditPopup()" [data]="editFormData"></ttnd-edit-buzz>
 </div>

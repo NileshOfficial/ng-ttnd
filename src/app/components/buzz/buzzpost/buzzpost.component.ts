@@ -140,6 +140,10 @@ export class BuzzPostComponent implements OnInit {
 		}
 	}
 
+	deleteBuzz() {
+		this.buzzApi.deleteBuzz(this.data._id).subscribe(data => console.log(data), err => console.log(err));
+	}
+
 	showImages() {
 		console.log("here");
 		this.imagesModal = true;

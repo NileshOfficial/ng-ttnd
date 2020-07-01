@@ -9,6 +9,7 @@ import { BuzzapiService } from 'src/app/services/apis/buzzapi.service';
 })
 export class EditBuzzComponent implements OnInit {
 	@Input() data: any = {};
+	@Output() submitted: EventEmitter<boolean> = new EventEmitter();
 	@Output() close: EventEmitter<boolean> = new EventEmitter();
 
 	buzzForm: FormGroup;
@@ -30,20 +31,18 @@ export class EditBuzzComponent implements OnInit {
 	}
 
 	patchBuzz() {
-		console.log(this.buzzForm.value);
 		if (this.buzzForm.valid && !this.invalidFile) {
 			this.showLoader();
 			const data = this.prepareDataToPost();
 			this.api.updateBuzz(this.data._id, data).subscribe(
 				(data) => {
-					console.log(data);
 					this.buzzForm.reset({
 						category: ''
 					});
 					this.hideLoader();
+					this.submitted.emit(true);
 				},
 				(err) => {
-					console.log(err);
 					this.showErr();
 				}
 			);
