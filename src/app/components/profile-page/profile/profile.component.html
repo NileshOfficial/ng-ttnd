@@ -34,7 +34,7 @@
 				<i class="fal fa-pencil"></i>
 			</button>
 		</div>
-		<div class="overlay fullscreen" *modal="editProfile && allowEditProfile">
+		<div class="overlay fullscreen" *ngIf="editProfile && allowEditProfile">
 			<form class="card" [formGroup]="editProfileForm" *ngIf="editProfile" (ngSubmit)="submitProfileUpdate()">
 				<button class="fab-icon fab-icon-sm close" (click)="closeEditForm()">
 					<i class="fal fa-times"></i>
