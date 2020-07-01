@@ -31,4 +31,8 @@ export class BuzzapiService {
 				: `${UPDATE_DISLIKE}/${docId}${reverse ? '?reverse=1' : ''}`;
 		return this.http.patch(uri, {});
 	}
+
+	updateBuzz(_id: string, update: any): Observable<any> {
+		return this.http.patch([BUZZ, _id].join('/'), update);
+	}
 }
