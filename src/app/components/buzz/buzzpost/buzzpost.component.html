@@ -61,5 +61,5 @@
 	</div>
 </div>
 <div class="overlay fullscreen" *ngIf="showEditForm && editable">
-	<ttnd-edit-buzz (close)="hideEditPopup()"></ttnd-edit-buzz>
+	<ttnd-edit-buzz (close)="hideEditPopup()" [data]="editFormData"></ttnd-edit-buzz>
 </div>

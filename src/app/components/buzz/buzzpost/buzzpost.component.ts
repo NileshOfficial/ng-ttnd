@@ -38,6 +38,7 @@ export class BuzzPostComponent implements OnInit {
 	imagesModal: boolean = false;
 
 	showEditForm: boolean = false;
+	editFormData: any = null;
 
 	constructor(private buzzApi: BuzzapiService) {}
 
@@ -50,6 +51,13 @@ export class BuzzPostComponent implements OnInit {
 
 		this.liked = this.data.liked;
 		this.disliked = this.data.disliked;
+
+		this.editFormData = {
+			_id: this.data._id,
+			title: this.data.title,
+			description: this.data.description,
+			category: this.data.category
+		}
 	}
 
 	toggleLike() {

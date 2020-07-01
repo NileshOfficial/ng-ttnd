@@ -1,5 +1,5 @@
-import { Component, OnChanges, SimpleChanges, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BuzzapiService } from 'src/app/services/apis/buzzapi.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { BuzzapiService } from 'src/app/services/apis/buzzapi.service';
 	styleUrls: ['./edit-buzz.component.css', '../../common.css']
 })
 export class EditBuzzComponent implements OnInit {
-	@Input() populate: any = {};
+	@Input() data: any = {};
 	@Output() close: EventEmitter<boolean> = new EventEmitter();
 
 	buzzForm: FormGroup;
@@ -23,18 +23,20 @@ export class EditBuzzComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.buzzForm = new FormGroup({
-			category: new FormControl(this.populate.category || '', [this.verifyCategory.bind(this)]),
-			description: new FormControl(this.populate.description || null),
-			title: new FormControl(this.populate.title || null)
+			category: new FormControl(this.data.category || '', [Validators.required ,this.verifyCategory.bind(this)]),
+			description: new FormControl(this.data.description || null, [Validators.required]),
+			title: new FormControl(this.data.title || null)
 		});
 	}
 
-	createBuzz() {
+	patchBuzz() {
+		console.log(this.buzzForm.value);
 		if (this.buzzForm.valid && !this.invalidFile) {
 			this.showLoader();
 			const data = this.prepareDataToPost();
-			this.api.postBuzz(data).subscribe(
+			this.api.updateBuzz(this.data._id, data).subscribe(
 				(data) => {
+					console.log(data);
 					this.buzzForm.reset({
 						category: ''
 					});
