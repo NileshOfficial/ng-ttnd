@@ -1,0 +1,70 @@
+<div class="header differentiate-bottom">
+	<h4>complaints</h4>
+</div>
+<div class="content">
+	<div class="form-container">
+		<form class="create card" [formGroup]="form">
+			<div class="dropdown-select m-rt-gap">
+                <select defaultFont>
+                    <option value="" [defaultSelected]="true">Select Department</option>
+                    <option [ngValue]="'activity'">Activity</option>
+                </select>
+            </div>
+            <div class="dropdown-select m-rt-gap">
+                <select defaultFont>
+                    <option value="" [defaultSelected]="true">Select Issue Title</option>
+                    <option [ngValue]="'hardware'">Hardware</option>
+                    <option [ngValue]="'infrastructure'">Infrastructure</option>
+                    <option [ngValue]="'others'">Others</option>
+                </select>
+            </div>
+			<textarea
+				defaultFont
+				multiline
+				rows="1"
+				id="description"
+				type="text"
+				placeholder="Describe your issue.."
+				name="description"
+			></textarea>
+            <div class="file-btn">
+				<label for="fileInput" title="maximum 5 images, jpeg and png files, maximum 5MB">
+					<i class="fal fa-camera-alt"></i>
+				</label>
+				<input
+					id="fileInput"
+					type="file"
+					multiple
+				/>
+			</div>
+            <div class="controls">
+				<button type="submit" class="btn btn-primary">
+					add
+				</button>
+				<button type="reset" class="btn btn-danger">
+					discard
+				</button>
+			</div>
+			<!-- <div class="overlay" *ngIf="err || postingBuzz">
+				<ttnd-spinner *ngIf="postingBuzz"></ttnd-spinner>
+				<span class="text-danger message" *ngIf="err"
+					>Something went wrong, try refreshing the page or contact administrator.</span
+				>
+			</div> -->
+		</form>
+    </div>
+    <div></div>
+	<!-- <div class="posts card" style="flex: 1;">
+		<div class="header differentiate-bottom">
+			<h4>feed</h4>
+			<div class="dropdown-select">
+				<select defaultFont>
+					<option value="" [defaultSelected]="true">Select Category</option>
+					<option value="activity">Activity</option>
+					<option value="lost and found">Lost and Found</option>
+				</select>
+			</div>
+		</div>
+		<ttnd-infinite [dataService]="api" [subscribeToArgs]="categoryFilter" [limit]="5" [repeat]="buzzPostComponent"></ttnd-infinite>
+	</div> -->
+</div>

@@ -1,0 +1,28 @@
+.header {
+    margin-bottom: 3rem;
+}
+
+.content {
+    display: flex;
+}
+
+.form-container {
+    display: flex;
+}
+
+.form-container .dropdown-select {
+    width: 50%;
+    margin-bottom: 1rem;
+}
+
+.form-container textarea {
+    width: calc(100% - 42px);
+}
+
+.form-container .controls {
+    width: 100%;
+}
+
+.content > * {
+    flex: 1;
+}
