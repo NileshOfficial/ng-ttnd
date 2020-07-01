@@ -40,3 +40,7 @@ form .fab {
 .ng-touched.ng-invalid {
     box-shadow: 0 0 4px #f00;
 }
+
+.posts {
+    overflow: hidden;
+}

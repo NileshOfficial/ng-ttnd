@@ -53,5 +53,17 @@
 			</div>
 		</form>
 	</div>
-	<ttnd-infinite [dataService]="api" [limit]="5" [repeat]="buzzPostComponent" style="flex: 1;"></ttnd-infinite>
+	<div class="posts card" style="flex: 1;">
+		<div class="header differentiate-bottom">
+			<h4>feed</h4>
+			<div class="dropdown-select">
+				<select defaultFont (change)="applyCategoryFilter($event)">
+					<option value="" [defaultSelected]="true">Select Category</option>
+					<option value="activity">Activity</option>
+					<option value="lost and found">Lost and Found</option>
+				</select>
+			</div>
+		</div>
+		<ttnd-infinite [dataService]="api" [subscribeToArgs]="categoryFilter" [limit]="5" [repeat]="buzzPostComponent"></ttnd-infinite>
+	</div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Type } from '@angular/core';
+import { Component, OnInit, Input, Type, OnChanges, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 	templateUrl: './infiniteScroller.component.html',
 	styleUrls: ['./infiniteScroller.component.css', '../common.css']
 })
-export class InfiniteScrollerComponent implements OnInit {
+export class InfiniteScrollerComponent implements OnInit, OnChanges {
 	@Input() repeat: Type<unknown>;
 	@Input() dataService: any;
 	@Input() dataBindings: { [k: string]: any } = {};
@@ -23,6 +23,11 @@ export class InfiniteScrollerComponent implements OnInit {
 	skip: number = 0;
 
 	constructor() {}
+
+	ngOnChanges(changes: SimpleChanges): void {
+		if(!changes.subscribeToArgs.firstChange)
+			this.reload();
+	}
 
 	ngOnInit(): void {
 		this.onScroll();

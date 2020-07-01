@@ -25,7 +25,7 @@
 	height: 70px;
 	padding-left: 3rem;
 	padding-right: 3rem;
-	color: #2e3034;
+	background-color: inherit;
 	position: relative;
 }
 
@@ -232,7 +232,7 @@
 }
 
 /* form elements */
-.dropdown {
+.dropdown-select {
 	display: inline-block;
 	position: relative;
 	width: 200px;
@@ -240,11 +240,11 @@
 	transition: 0.2s ease-in-out;
 }
 
-.dropdown:hover {
+.dropdown-select:hover {
 	background-color: rgba(255, 255, 255, 0.09);
 }
 
-.dropdown:after {
+.dropdown-select:after {
 	content: '\2304';
 	position: absolute;
 	top: -4px;
@@ -253,7 +253,7 @@
 	font-size: 3.2rem;
 }
 
-.dropdown select {
+.dropdown-select select {
 	border: none;
 	width: 100%;
 	background: none;
@@ -268,18 +268,18 @@
 	text-transform: capitalize;
 }
 
-.dropdown select::-ms-expand {
+.dropdown-select select::-ms-expand {
 	display: none;
 }
 
-.dropdown select option {
+.dropdown-select select option {
 	display: inline-block;
 	background-color: #2e3034;
 	color: #dadce0;
 	border: none;
 }
 
-.dropdown select option:hover {
+.dropdown-select select option:hover {
 	border: none;
 	color: #dadce0;
 }

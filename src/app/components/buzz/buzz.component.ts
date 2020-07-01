@@ -16,6 +16,7 @@ export class BuzzComponent implements OnInit {
 	buzzForm: FormGroup = getBuzzForm();
 	allowedFileType: Array<string> = ['image/png', 'image/jpeg'];
 	uploadedFiles: Array<File> = [];
+	categoryFilter: any = {};
 
 	invalidFile: boolean = false;
 	postingBuzz: boolean = false;
@@ -93,5 +94,13 @@ export class BuzzComponent implements OnInit {
 	reset() {
 		this.invalidFile = false;
 		this.uploadedFiles = [];
+	}
+
+	applyCategoryFilter(event: any) {
+		if(event.target.value)
+			this.categoryFilter = {
+				category: event.target.value
+			};
+		else this.categoryFilter = {};
 	}
 }
