@@ -3,21 +3,23 @@
 </div>
 <div class="content">
 	<div class="form-container">
-		<form class="create card" [formGroup]="form">
+		<form class="create card" [formGroup]="complaintForm" (ngSubmit)="createComplaint()">
 			<div class="dropdown-select m-rt-gap">
-                <select defaultFont>
-                    <option value="" [defaultSelected]="true">Select Department</option>
-                    <option [ngValue]="'activity'">Activity</option>
-                </select>
-            </div>
-            <div class="dropdown-select m-rt-gap">
-                <select defaultFont>
-                    <option value="" [defaultSelected]="true">Select Issue Title</option>
-                    <option [ngValue]="'hardware'">Hardware</option>
-                    <option [ngValue]="'infrastructure'">Infrastructure</option>
-                    <option [ngValue]="'others'">Others</option>
-                </select>
-            </div>
+				<select defaultFont formControlName="department">
+					<option value="" [defaultSelected]="true">Select Department</option>
+					<option [ngValue]="dept._id" *ngFor="let dept of departmentList">{{
+						dept.name | uppercase
+					}}</option>
+				</select>
+			</div>
+			<div class="dropdown-select m-rt-gap">
+				<select defaultFont formControlName="title">
+					<option value="" [defaultSelected]="true">Select Issue Title</option>
+					<option [ngValue]="'hardware'">Hardware</option>
+					<option [ngValue]="'infrastructure'">Infrastructure</option>
+					<option [ngValue]="'others'">Others</option>
+				</select>
+			</div>
 			<textarea
 				defaultFont
 				multiline
@@ -26,34 +28,31 @@
 				type="text"
 				placeholder="Describe your issue.."
 				name="description"
+				formControlName="description"
 			></textarea>
-            <div class="file-btn">
-				<label for="fileInput" title="maximum 5 images, jpeg and png files, maximum 5MB">
-					<i class="fal fa-camera-alt"></i>
+			<div class="file-btn">
+				<label for="complaintFiles" title="maximum 5 files, jpeg, png, plaintext and pdf files, maximum 5MB each">
+					<i class="fal fa-file"></i>
 				</label>
-				<input
-					id="fileInput"
-					type="file"
-					multiple
-				/>
+				<input id="complaintFiles" type="file" multiple accept="{{ allowedFileTypes.join() }}" (change)="fileChange($event)"/>
 			</div>
-            <div class="controls">
+			<div class="controls">
 				<button type="submit" class="btn btn-primary">
 					add
 				</button>
-				<button type="reset" class="btn btn-danger">
+				<button type="reset" class="btn btn-danger" (click)="reset()">
 					discard
 				</button>
 			</div>
-			<!-- <div class="overlay" *ngIf="err || postingBuzz">
-				<ttnd-spinner *ngIf="postingBuzz"></ttnd-spinner>
-				<span class="text-danger message" *ngIf="err"
-					>Something went wrong, try refreshing the page or contact administrator.</span
-				>
-			</div> -->
+			<div class="overlay" *ngIf="err || postingComplaint">
+				<ttnd-spinner *ngIf="postingComplaint"></ttnd-spinner>
+				<span class="text-danger message" *ngIf="err">
+                    Something went wrong, try refreshing the page or contact administrator.
+                </span>
+			</div>
 		</form>
-    </div>
-    <div></div>
+	</div>
+	<div></div>
 	<!-- <div class="posts card" style="flex: 1;">
 		<div class="header differentiate-bottom">
 			<h4>feed</h4>
