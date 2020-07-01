@@ -1,4 +1,7 @@
 <div class="post bgDark differentiate-bottom">
+	<button class="fab-icon fab-icon-md edit" *ngIf="editable" (click)="showEditPopup()">
+		<i class="fal fa-pencil"></i>
+	</button>
 	<div class="postHeader">
 		<div class="userImg">
 			<img src="{{ data.user.picture }}" alt="" srcset="" />
@@ -56,4 +59,7 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div class="overlay fullscreen" *ngIf="showEditForm && editable">
+	<ttnd-edit-buzz (close)="hideEditPopup()"></ttnd-edit-buzz>
 </div>

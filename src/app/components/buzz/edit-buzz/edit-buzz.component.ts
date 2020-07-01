@@ -1,33 +1,37 @@
-import { Component, OnChanges, SimpleChanges, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { getBuzzForm } from '../buzz.form';
+import { Component, OnChanges, SimpleChanges, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { BuzzapiService } from 'src/app/services/apis/buzzapi.service';
 
 @Component({
-  selector: 'ttnd-edit-buzz',
-  templateUrl: './edit-buzz.component.html',
-  styleUrls: ['./edit-buzz.component.css', '../../common.css']
+	selector: 'ttnd-edit-buzz',
+	templateUrl: './edit-buzz.component.html',
+	styleUrls: ['./edit-buzz.component.css', '../../common.css']
 })
-export class EditBuzzComponent implements OnChanges {
-  @Input() populate: any = {};
+export class EditBuzzComponent implements OnInit {
+	@Input() populate: any = {};
+	@Output() close: EventEmitter<boolean> = new EventEmitter();
 
-  buzzForm: FormGroup = null;
+	buzzForm: FormGroup;
 	allowedFileType: Array<string> = ['image/png', 'image/jpeg'];
 	uploadedFiles: Array<File> = [];
 
 	invalidFile: boolean = false;
 	postingBuzz: boolean = false;
-  err: boolean = false;
+	err: boolean = false;
 
-  constructor(private api: BuzzapiService) { }
+	constructor(private api: BuzzapiService) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.buzzForm = getBuzzForm(this.populate);
-  }
+	ngOnInit(): void {
+		this.buzzForm = new FormGroup({
+			category: new FormControl(this.populate.category || '', [this.verifyCategory.bind(this)]),
+			description: new FormControl(this.populate.description || null),
+			title: new FormControl(this.populate.title || null)
+		});
+	}
 
-  createBuzz() {
+	createBuzz() {
 		if (this.buzzForm.valid && !this.invalidFile) {
-			this.showLoader()
+			this.showLoader();
 			const data = this.prepareDataToPost();
 			this.api.postBuzz(data).subscribe(
 				(data) => {
@@ -93,6 +97,12 @@ export class EditBuzzComponent implements OnChanges {
 	reset() {
 		this.invalidFile = false;
 		this.uploadedFiles = [];
+		this.close.emit(false);
 	}
 
+	verifyCategory(category: FormControl): { [k: string]: boolean } {
+		const categories = ['activity', 'lost and found'];
+		if (categories.includes(category.value)) return null;
+		else return { invalidCategory: true };
+	}
 }

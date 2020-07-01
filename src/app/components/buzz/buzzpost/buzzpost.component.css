@@ -5,6 +5,13 @@
 .post {
     padding: 2rem 2.5rem;
     width: 100%;
+    position: relative;
+}
+
+.post .edit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .post .postHeader {

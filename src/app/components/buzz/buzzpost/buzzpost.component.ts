@@ -28,6 +28,7 @@ interface Post {
 })
 export class BuzzPostComponent implements OnInit {
 	@Input() data: Post;
+	@Input() editable: boolean = true;
 
 	liked: boolean = true;
 	disliked: boolean = true;
@@ -35,6 +36,8 @@ export class BuzzPostComponent implements OnInit {
 
 	postingReview: boolean = false;
 	imagesModal: boolean = false;
+
+	showEditForm: boolean = false;
 
 	constructor(private buzzApi: BuzzapiService) {}
 
@@ -136,5 +139,13 @@ export class BuzzPostComponent implements OnInit {
 
 	closeImages() {
 		this.imagesModal = false;
+	}
+
+	showEditPopup() {
+		this.showEditForm = true;
+	}
+
+	hideEditPopup() {
+		this.showEditForm = false;
 	}
 }
