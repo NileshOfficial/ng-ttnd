@@ -28,7 +28,7 @@ interface Post {
 })
 export class BuzzPostComponent implements OnInit {
 	@Input() data: Post;
-	@Input() editable: boolean = true;
+	@Input() editable: boolean = false;
 	@Output() reload: EventEmitter<boolean> = new EventEmitter();
 
 	liked: boolean = true;
