@@ -350,3 +350,8 @@ form .close {
 	position: fixed;
 	z-index: 3;
 }
+
+.m-rt-gap {
+	margin-left: 0;
+	margin-right: auto;
+}
