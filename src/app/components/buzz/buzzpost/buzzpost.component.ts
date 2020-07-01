@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BUZZ_POST, PROFILE_PIC } from '../../../config/uri.conf';
 import { BuzzapiService } from 'src/app/services/apis/buzzapi.service';
 
@@ -29,6 +29,7 @@ interface Post {
 export class BuzzPostComponent implements OnInit {
 	@Input() data: Post;
 	@Input() editable: boolean = true;
+	@Output() reload: EventEmitter<boolean> = new EventEmitter();
 
 	liked: boolean = true;
 	disliked: boolean = true;
@@ -141,7 +142,9 @@ export class BuzzPostComponent implements OnInit {
 	}
 
 	deleteBuzz() {
-		this.buzzApi.deleteBuzz(this.data._id).subscribe(data => console.log(data), err => console.log(err));
+		this.buzzApi.deleteBuzz(this.data._id).subscribe(data => {
+			this.reload.emit(true);
+		}, err => {console.log(err)});
 	}
 
 	showImages() {
@@ -157,7 +160,9 @@ export class BuzzPostComponent implements OnInit {
 		this.showEditForm = true;
 	}
 
-	hideEditPopup() {
+	hideEditPopup(event: boolean) {
+		if(event)
+			this.reload.emit(true);
 		this.showEditForm = false;
 	}
 }

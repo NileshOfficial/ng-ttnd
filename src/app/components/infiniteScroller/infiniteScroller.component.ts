@@ -10,6 +10,7 @@ export class InfiniteScrollerComponent implements OnInit {
 	@Input() repeat: Type<unknown>;
 	@Input() dataService: any;
 	@Input() dataBindings: { [k: string]: any } = {};
+	@Input() eventBindings: { [k: string]: Function } = {};
 	@Input() subscribeToArgs: any = {};
 	@Input() limit: number = 0;
 
@@ -48,8 +49,21 @@ export class InfiniteScrollerComponent implements OnInit {
 		}
 	}
 
+	reload() {
+		this.data = [];
+		this.skip = 0;
+		this.stopScrolling = false;
+		this.subscription = null;
+		this.onScroll();
+	}
+
 	getDataBindings(data: any) {
 		this.dataBindings.data = data;
 		return this.dataBindings;
+	}
+
+	getEventBindings() {
+		this.eventBindings.reload = this.reload.bind(this);
+		return this.eventBindings;
 	}
 }
