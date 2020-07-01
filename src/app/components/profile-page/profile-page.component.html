@@ -1,8 +1,20 @@
 <div class="header differentiate-bottom">
 	<h4>Nilesh Kumar</h4>
 	<div class="tabs">
-		<button class="btn btn-primary btn-dark" [ngClass]="{'active': currentView === 'profile'}" (click)="showProfile()">profile</button>
-		<button class="btn btn-primary btn-dark" [ngClass]="{'active': currentView === 'activity'}" (click)="showActivity()">activity</button>
+		<button
+			class="btn btn-primary btn-dark"
+			[ngClass]="{ active: currentView === 'profile' }"
+			(click)="showProfile()"
+		>
+			profile
+		</button>
+		<button
+			class="btn btn-primary btn-dark"
+			[ngClass]="{ active: currentView === 'activity' }"
+			(click)="showActivity()"
+		>
+			activity
+		</button>
 	</div>
 </div>
 <div>
@@ -11,4 +23,12 @@
 		[userEmail]="userEmail"
 		[allowEditProfile]="editableProfile"
 	></ttnd-profile>
+	<ttnd-infinite
+		*ngIf="currentView === 'activity'"
+		[dataBindings]="buzzDataBindings"
+		[dataService]="buzzApi"
+		[limit]="5"
+		[repeat]="buzzPostComponent"
+		[subscribeToArgs]="buzzFilter"
+	></ttnd-infinite>
 </div>
