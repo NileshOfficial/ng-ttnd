@@ -28,7 +28,6 @@ import { SpinnerComponent } from './components/genericComponents/spinner/spinner
 import { DurationPipe } from './pipes/duration.pipe';
 import { CarouselComponent } from './components/genericComponents/carousel/carousel.component';
 import { ProfileComponent } from './components/profile-page/profile/profile.component';
-import { ModalDirective } from './directives/modal.directive';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { EditBuzzComponent } from './components/buzz/edit-buzz/edit-buzz.component';
 
@@ -55,7 +54,6 @@ import { EditBuzzComponent } from './components/buzz/edit-buzz/edit-buzz.compone
 		DurationPipe,
 		CarouselComponent,
 		ProfileComponent,
-		ModalDirective,
 		ProfilePageComponent,
 		EditBuzzComponent
 	],
