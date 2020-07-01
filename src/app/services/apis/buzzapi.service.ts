@@ -35,4 +35,8 @@ export class BuzzapiService {
 	updateBuzz(_id: string, update: any): Observable<any> {
 		return this.http.patch([BUZZ, _id].join('/'), update);
 	}
+
+	deleteBuzz(_id: string): Observable<any> {
+		return this.http.delete([BUZZ, _id].join('/'));
+	}
 }
