@@ -50,6 +50,12 @@
     font-size: 5px;
 }
 
+.post .postHeader .meta .title {
+    width: 100%;
+    text-transform: capitalize;
+    margin-top: 5px;
+}
+
 .post .content {
     margin-left: 56px;
 }
