@@ -13,7 +13,12 @@
 		</div>
 		<div class="meta text-default">
 			<span>{{ data.user.name }}</span>
-			<span id="meta-email" class="link-underline text-primary">
+			<span
+				id="meta-email"
+				class="link-underline text-primary"
+				[routerLink]="['/home', 'profile']"
+				[state]="{ email: data.user.email }"
+			>
 				{{ data.user.email }}
 			</span>
 			<span id="meta-separator" class="separator">
@@ -66,5 +71,9 @@
 	</div>
 </div>
 <div class="overlay fullscreen" *ngIf="showEditForm && editable">
-	<ttnd-edit-buzz (submitted)="hideEditPopup($event)" (close)="hideEditPopup($event)" [data]="editFormData"></ttnd-edit-buzz>
+	<ttnd-edit-buzz
+		(submitted)="hideEditPopup($event)"
+		(close)="hideEditPopup($event)"
+		[data]="editFormData"
+	></ttnd-edit-buzz>
 </div>
