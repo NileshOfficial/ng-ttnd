@@ -25,7 +25,7 @@ export class InfiniteScrollerComponent implements OnInit, OnChanges {
 	constructor() {}
 
 	ngOnChanges(changes: SimpleChanges): void {
-		if(!changes.subscribeToArgs.firstChange)
+		if(changes.subscribeToArgs && !changes.subscribeToArgs.firstChange)
 			this.reload();
 	}
 
