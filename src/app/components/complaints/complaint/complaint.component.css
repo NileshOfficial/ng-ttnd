@@ -1,0 +1,21 @@
+.card {
+    padding: 2.5rem;
+}
+
+.header {
+    padding: 0 !important;
+}
+
+.data {
+    margin-top: 1rem;
+    display: flex;
+    font-size: 1.8rem;
+}
+
+.data > * {
+    flex: 1;
+}
+
+.data .link-heavy {
+    cursor: default;
+}

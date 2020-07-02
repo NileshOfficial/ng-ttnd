@@ -31,6 +31,7 @@ import { ProfileComponent } from './components/profile-page/profile/profile.comp
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { EditBuzzComponent } from './components/buzz/edit-buzz/edit-buzz.component';
 import { ComplaintsComponent } from './components/complaints/complaints.component';
+import { ComplaintComponent } from './components/complaints/complaint/complaint.component';
 
 @NgModule({
 	declarations: [
@@ -57,7 +58,8 @@ import { ComplaintsComponent } from './components/complaints/complaints.componen
 		ProfileComponent,
 		ProfilePageComponent,
 		EditBuzzComponent,
-		ComplaintsComponent
+		ComplaintsComponent,
+		ComplaintComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, InfiniteScrollModule, ReactiveFormsModule],
 	providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestHeaderService, multi: true }],
