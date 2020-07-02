@@ -4,10 +4,12 @@
 
 .content {
     display: flex;
+    align-items: flex-start;
 }
 
 .form-container {
     display: flex;
+    margin-right: 3rem;
 }
 
 .form-container .dropdown-select {

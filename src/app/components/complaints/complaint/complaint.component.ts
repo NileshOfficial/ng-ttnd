@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ComplaintapiService } from 'src/app/services/apis/complaintapi.service';
 import { Complaint } from 'src/app/models/complaint.model';
 
@@ -9,7 +9,8 @@ import { Complaint } from 'src/app/models/complaint.model';
 })
 export class ComplaintComponent implements OnInit {
 	@Input() editableBy: string = 'user'; /* admin, user, view */
-  @Input() data: Complaint = null;
+	@Input() data: Complaint = null;
+	@Output() reload: EventEmitter<boolean> = new EventEmitter();
 
 	constructor(private complaintApi: ComplaintapiService) {}
 

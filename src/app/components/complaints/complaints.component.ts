@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DepartmentapiService } from 'src/app/services/apis/departmentapi.service';
 import { Department } from 'src/app/models/department.model';
 import { ComplaintapiService } from 'src/app/services/apis/complaintapi.service';
+import { ComplaintComponent } from './complaint/complaint.component';
 
 @Component({
 	selector: 'ttnd-complaints',
@@ -10,6 +11,7 @@ import { ComplaintapiService } from 'src/app/services/apis/complaintapi.service'
 	styleUrls: ['./complaints.component.css', '../common.css']
 })
 export class ComplaintsComponent implements OnInit {
+	readonly complaint = ComplaintComponent;
 	complaintForm: FormGroup = null;
 	departmentList: Array<Department> = [];
 	allowedFileTypes: Array<string> = ['image/jpeg', 'image/png', 'text/plain', 'application/pdf'];
@@ -17,12 +19,12 @@ export class ComplaintsComponent implements OnInit {
 
 	invalidFile: boolean = false;
 	postingComplaint: boolean = false;
-  err: boolean = false;
+	err: boolean = false;
 
-  complaintLogged: boolean = false;
-  referalId: string = '';
+	complaintLogged: boolean = false;
+	referalId: string = '';
 
-	constructor(private complaintApi: ComplaintapiService, private deptApi: DepartmentapiService) {}
+	constructor(public complaintApi: ComplaintapiService, private deptApi: DepartmentapiService) {}
 
 	ngOnInit(): void {
 		this.deptApi.getDepartments().subscribe(
@@ -47,12 +49,12 @@ export class ComplaintsComponent implements OnInit {
 			const data = this.prepareDataToPost();
 			this.complaintApi.postComplaint(data).subscribe(
 				(data) => {
-          console.log(data);
+					console.log(data);
 					this.complaintForm.reset({
 						department: '',
 						title: ''
-          });
-          this.referalId = data.referenceToken;
+					});
+					this.referalId = data.referenceToken;
 					this.hideLoader();
 				},
 				(err) => {
@@ -106,8 +108,8 @@ export class ComplaintsComponent implements OnInit {
 
 	hideLoader(): void {
 		this.postingComplaint = false;
-    this.err = false;
-    this.complaintLogged = true;
+		this.err = false;
+		this.complaintLogged = true;
 	}
 
 	reset() {

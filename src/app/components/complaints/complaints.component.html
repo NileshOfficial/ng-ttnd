@@ -31,10 +31,19 @@
 				formControlName="description"
 			></textarea>
 			<div class="file-btn">
-				<label for="complaintFiles" title="maximum 5 files, jpeg, png, plaintext and pdf files, maximum 5MB each">
+				<label
+					for="complaintFiles"
+					title="maximum 5 files, jpeg, png, plaintext and pdf files, maximum 5MB each"
+				>
 					<i class="fal fa-file"></i>
 				</label>
-				<input id="complaintFiles" type="file" multiple accept="{{ allowedFileTypes.join() }}" (change)="fileChange($event)"/>
+				<input
+					id="complaintFiles"
+					type="file"
+					multiple
+					accept="{{ allowedFileTypes.join() }}"
+					(change)="fileChange($event)"
+				/>
 			</div>
 			<div class="controls">
 				<button type="submit" class="btn btn-primary">
@@ -47,23 +56,25 @@
 			<div class="overlay" *ngIf="err || postingComplaint">
 				<ttnd-spinner *ngIf="postingComplaint"></ttnd-spinner>
 				<span class="text-danger message" *ngIf="err">
-                    Something went wrong, try refreshing the page or contact administrator.
-                </span>
+					Something went wrong, try refreshing the page or contact administrator.
+				</span>
 			</div>
-            <span class="message text-danger" *ngIf="invalidFile">
-                Maximum 5 files of size max size 5MB each are allowed of type plaintext, jpeg, png, pdf.
-            </span>
-        </form>
-        <div class="overlay fullscreen" *ngIf="complaintLogged">
-            <div class="complaint-id card">
-                <button class="fab-icon fab-icon-sm close" (click)="complaintLogged = false;">
-                    <i class="fal fa-times"></i>
-                </button>
-                Your complaint has been logged. Your referal id is <span class="text-primary link-heavy">{{referalId}}</span>.
-            </div>
-        </div>
+			<span class="message text-danger" *ngIf="invalidFile">
+				Maximum 5 files of size max size 5MB each are allowed of type plaintext, jpeg, png, pdf.
+			</span>
+		</form>
+		<div class="overlay fullscreen" *ngIf="complaintLogged">
+			<div class="complaint-id card">
+				<button class="fab-icon fab-icon-sm close" (click)="complaintLogged = false">
+					<i class="fal fa-times"></i>
+				</button>
+				Your complaint has been logged. Your referal id is
+				<span class="text-primary link-heavy">{{ referalId }}</span
+				>.
+			</div>
+		</div>
 	</div>
-	<div></div>
+	<ttnd-infinite [repeat]="complaint" [dataService]="complaintApi" [limit]="5"></ttnd-infinite>
 	<!-- <div class="posts card" style="flex: 1;">
 		<div class="header differentiate-bottom">
 			<h4>feed</h4>
