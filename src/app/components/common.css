@@ -156,6 +156,10 @@
 	background-color: rgba(0, 0, 0, 0.09);
 }
 
+.link {
+	cursor: pointer;
+}
+
 .link-heavy {
 	cursor: pointer;
 	font-weight: 500;
@@ -220,6 +224,14 @@
 
 .message {
 	font-size: 1.6rem;
+}
+
+.text-title {
+	text-transform: capitalize;
+}
+
+.text-caps {
+	text-transform: uppercase;
 }
 /**/
 
