@@ -1,7 +1,7 @@
 <div class="card">
     <div class="header">
         <h3 class="text-primary text-caps">qwewer</h3>
-        <div class="edit">
+        <div class="edit" *ngIf="editableBy === 'user'">
             <button class="fab-icon fab-icon-md">
                 <i class="fal fa-pencil"></i>
             </button>
@@ -10,20 +10,43 @@
             </button>
         </div>
     </div>
-    <div class="data">
+    <div class="data" *ngIf="editableBy === 'admin' || editableBy === 'view'">
+        <span class="link-heavy text-title">locked by</span>
+        <span class="text-primary link">
+            <span class="text-title">nilesh kumar</span>
+            (nilesh.kumar@tothenew.com)
+        </span>
+    </div>
+
+    <div class="data" *ngIf="editableBy === 'user' || editableBy === 'view'">
         <span class="link-heavy text-title">assigned to</span>
         <span class="text-primary link">
             <span class="text-title">nilesh kumar</span>
             (nilesh.kumar@tothenew.com)
         </span>
     </div>
+
     <div class="data">
         <span class="link-heavy text-title">department</span>
         <span class="text-caps">it</span>
     </div>
+
     <div class="data">
         <span class="link-heavy text-title">status</span>
-        <span class="text-title">open</span>
+        <span class="text-title" *ngIf="editableBy === 'user' || editableBy === 'view'">open</span>
+        <div *ngIf="editableBy === 'admin'">
+            <div class="dropdown-select">
+                <select>
+                    <option value="">qwert</option>
+                    <option value="">qwerty</option>
+                    <option value="">qwertyu</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="data">
+        <span class="link-heavy text-title">estimated time</span>
+        <span>2 weeks</span>
     </div>
     <div class="data">
         <span class="link-heavy text-title">description</span>

@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./complaint.component.css', '../../common.css']
 })
 export class ComplaintComponent implements OnInit {
+
+  editableBy: string = 'user'; /* admin, user, view */
+
   constructor() { }
 
   ngOnInit(): void {
