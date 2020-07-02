@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card bgDark differentiate-bottom">
 	<div class="header">
 		<h3 class="text-primary text-caps">{{ data.issueId }}</h3>
 		<div class="edit" *ngIf="editableBy === 'user'">
@@ -33,12 +33,12 @@
 
 	<div class="data">
 		<span class="link-heavy text-title">title</span>
-		<span class="text-caps">{{ data.title }}</span>
+		<span class="text-title">{{ data.title }}</span>
 	</div>
 
 	<div class="data">
-		<span class="link-heavy text-title">{{ data.status }}</span>
-		<span class="text-title" *ngIf="editableBy === 'user' || editableBy === 'view'">open</span>
+		<span class="link-heavy text-title">status</span>
+		<span class="text-title" *ngIf="editableBy === 'user' || editableBy === 'view'">{{ data.status }}</span>
 		<div *ngIf="editableBy === 'admin'">
 			<div class="dropdown-select">
 				<select>
@@ -49,7 +49,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="data">
+	<div class="data" *ngIf="data.status === 'in progress'">
 		<span class="link-heavy text-title">estimated time</span>
 		<span>{{ data.estimatedTime.value }}&nbsp;{{ data.estimatedTime.spanType }}</span>
 	</div>
