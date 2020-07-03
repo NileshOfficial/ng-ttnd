@@ -40,11 +40,11 @@
 		<span class="link-heavy text-title">status</span>
 		<span class="text-title" *ngIf="editableBy === 'user' || editableBy === 'view'">{{ data.status }}</span>
 		<div *ngIf="editableBy === 'admin'">
-			<div class="dropdown-select">
-				<select>
-					<option value="open">open</option>
-					<option value="in progress">in progress</option>
-					<option value="closed">closed</option>
+			<div class="dropdown-select" (click)="statusChange($event)">
+				<select #statusDropdown>
+					<option value="open">Open</option>
+					<option value="in progress">In Progress</option>
+					<option value="closed">Closed</option>
 				</select>
 			</div>
 		</div>
@@ -56,6 +56,34 @@
 	<div class="data">
 		<span class="link-heavy text-title">description</span>
 		<p>{{ data.description }}</p>
+	</div>
+
+	<div class="overlay" *ngIf="showEstimatedTimeForm">
+		<form class="card estimated-time-form" [formGroup]="estimatedTimeForm" (ngSubmit)="updateEstimatedTime()">
+			<div class="inputs">
+				<input type="number" formControlName="value" placeholder="Enter Duration Value" />
+				<div class="dropdown-select">
+					<select defaultFont formControlName="spanType">
+						<option value="" [defaultSelected]="true">Select time type</option>
+						<option [ngValue]="'hours'">Hours</option>
+						<option [ngValue]="'days'">Days</option>
+						<option [ngValue]="'weeks'">Weeks</option>
+						<option [ngValue]="'months'">Months</option>
+					</select>
+				</div>
+			</div>
+			<div class="controls">
+				<button class="btn btn-primary" type="submit">
+					update
+				</button>
+				<button class="btn btn-danger" type="reset" (click)="discardStatusUpdate()">
+					discard
+				</button>
+			</div>
+		</form>
+		<div class="overlay" *ngIf="updatingStatus">
+			<ttnd-spinner *ngIf="updatingStatus"></ttnd-spinner>
+		</div>
 	</div>
 </div>
 

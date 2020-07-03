@@ -1,6 +1,7 @@
 .card {
     padding: 2.5rem;
     border-radius: 0px !important;
+    position: relative;
 }
 
 .header {
@@ -19,4 +20,29 @@
 
 .data .link-heavy {
     cursor: default;
+}
+
+.estimated-time-form {
+    border-radius: 8px !important;
+}
+
+.estimated-time-form .inputs {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.estimated-time-form .inputs input {
+    margin-right: 1rem;
+}
+
+.estimated-time-form .inputs > * {
+    flex: 1;
+}
+
+.estimated-time-form .controls {
+    width: 100%;
+}
+
+.ng-touched.ng-invalid {
+    box-shadow: 0 0 4px #f00;
 }
