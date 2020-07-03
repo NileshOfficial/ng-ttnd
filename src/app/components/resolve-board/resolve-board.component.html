@@ -1,0 +1,7 @@
+<ttnd-infinite
+	[repeat]="complaint"
+    [dataService]="complaintApi"
+    [dataServiceFn]="'getAssignedComplaints'"
+	[dataBindings]="{ editableBy: 'admin' }"
+	[limit]="5"
+></ttnd-infinite>

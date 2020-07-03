@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BuzzComponent } from './components/buzz/buzz.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { ComplaintsComponent } from './components/complaints/complaints.component';
+import { ResolveBoardComponent } from './components/resolve-board/resolve-board.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/auth/login', pathMatch: 'full' },
@@ -23,7 +24,8 @@ const routes: Routes = [
 			{ path: 'buzz', component: BuzzComponent },
 			{ path: 'myprofile', component: ProfilePageComponent },
 			{ path: 'profile', component: ProfilePageComponent },
-			{ path: 'complaints', component: ComplaintsComponent }
+			{ path: 'complaints', component: ComplaintsComponent },
+			{ path: 'resolve', component: ResolveBoardComponent }
 		]
 	}
 ];

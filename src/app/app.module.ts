@@ -33,6 +33,7 @@ import { EditBuzzComponent } from './components/buzz/edit-buzz/edit-buzz.compone
 import { ComplaintsComponent } from './components/complaints/complaints.component';
 import { ComplaintComponent } from './components/complaints/complaint/complaint.component';
 import { EditComplaintComponent } from './components/complaints/edit-complaint/edit-complaint.component';
+import { ResolveBoardComponent } from './components/resolve-board/resolve-board.component';
 
 @NgModule({
 	declarations: [
@@ -61,7 +62,8 @@ import { EditComplaintComponent } from './components/complaints/edit-complaint/e
 		EditBuzzComponent,
 		ComplaintsComponent,
 		ComplaintComponent,
-		EditComplaintComponent
+		EditComplaintComponent,
+		ResolveBoardComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, InfiniteScrollModule, ReactiveFormsModule],
 	providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestHeaderService, multi: true }],
