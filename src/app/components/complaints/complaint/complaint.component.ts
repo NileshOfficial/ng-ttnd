@@ -14,14 +14,15 @@ export class ComplaintComponent implements OnInit {
 
 	constructor(private complaintApi: ComplaintapiService) {}
 
-	ngOnInit(): void {
-		this.complaintApi.get().subscribe(
+	ngOnInit(): void {}
+
+	deleteComplaint() {
+		this.complaintApi.deleteComplaint(this.data._id).subscribe(
 			(data) => {
 				console.log(data);
+				this.reload.emit(true);
 			},
-			(err) => {
-				console.log(err);
-			}
+			(err) => console.log(err)
 		);
 	}
 }
