@@ -17,3 +17,4 @@ export const PROFILE_PIC: string = getEndpoint('profile');
 export const DEPARTMENT: string = getEndpoint('department');
 
 export const COMPLAINT: string = getEndpoint('complaints');
+export const COMPLAINT_RESOLVE: string = getEndpoint('complaints/resolve');
