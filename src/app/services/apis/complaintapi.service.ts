@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { COMPLAINT, COMPLAINT_RESOLVE } from '../../config/uri.conf';
+import { COMPLAINT, COMPLAINT_RESOLVE, COMPLAINT_ASSIGNED } from '../../config/uri.conf';
 import { Complaint } from 'src/app/models/complaint.model';
 
 @Injectable({
@@ -18,6 +18,16 @@ export class ComplaintapiService {
 		};
 		const params = new HttpParams({ fromObject: constructedQuery });
 		return this.http.get<Array<Complaint>>(COMPLAINT, { params: params });
+	}
+
+	getAssignedComplaints(query: any = {}, skip: number = 0, limit: number = 0) {
+		const constructedQuery = {
+			...query,
+			...(skip && { skip: skip }),
+			...(limit && { limit: limit })
+		};
+		const params = new HttpParams({ fromObject: constructedQuery });
+		return this.http.get<Array<Complaint>>(COMPLAINT_ASSIGNED, { params: params });
 	}
 
 	updateComplaint(_id: string, update: any): Observable<any> {
