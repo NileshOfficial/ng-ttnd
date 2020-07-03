@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { COMPLAINT } from '../../config/uri.conf';
+import { COMPLAINT, COMPLAINT_RESOLVE } from '../../config/uri.conf';
 import { Complaint } from 'src/app/models/complaint.model';
 
 @Injectable({
@@ -30,5 +30,9 @@ export class ComplaintapiService {
 
 	deleteComplaint(_id: string): Observable<any> {
 		return this.http.delete([COMPLAINT, _id].join('/'));
+	}
+
+	updateResolve(_id: string, update: any): Observable<any> {
+		return this.http.patch([COMPLAINT_RESOLVE, _id].join('/'), update);
 	}
 }
