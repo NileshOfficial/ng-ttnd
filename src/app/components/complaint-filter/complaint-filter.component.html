@@ -1,0 +1,36 @@
+<form class="filters" [formGroup]="filtersForm" (ngSubmit)="applyFilters()">
+    <div class="input-group">
+        <label class="text-title">search by issue id</label>
+        <input formControlName="issueId" type="search" placeholder="Search by Issue ID" />
+    </div>
+    <div class="input-group">
+        <label class="offset text-title">select department</label>
+        <div class="dropdown-select">
+            <select defaultFont formControlName="department">
+                <option [ngValue]="''" [defaultSelected]="true">Select Department</option>
+                <option [ngValue]="department._id" *ngFor="let department of departments">{{
+                    department.name | uppercase
+                }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="input-group">
+        <label class="offset text-title">select status</label>
+        <div class="dropdown-select">
+            <select defaultFont formControlName="status">
+                <option [ngValue]="''" [defaultSelected]="true">Select Status</option>
+                <option [ngValue]="'open'">Open</option>
+                <option [ngValue]="'in progress'">In Progress</option>
+                <option [ngValue]="'resolved'">Resolved</option>
+            </select>
+        </div>
+    </div>
+    <div class="controls">
+        <button class="fab-icon fab-icon-md text-primary" type="submit">
+            <i class="fal fa-check"></i>
+        </button>
+        <button class="fab-icon fab-icon-md text-danger" type="reset" (click)="resetFilters()">
+            <i class="fal fa-undo"></i>
+        </button>
+    </div>
+</form>
