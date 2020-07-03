@@ -314,8 +314,8 @@ form .input > label{
 	margin-bottom: 2rem;
 }
 
-form input,
-form textarea {
+input,
+textarea {
 	width: 100%;
 	border: none;
 	outline: none;
