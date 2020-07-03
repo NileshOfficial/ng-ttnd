@@ -20,6 +20,10 @@ export class ComplaintapiService {
 		return this.http.get<Array<Complaint>>(COMPLAINT, { params: params });
 	}
 
+	updateComplaint(_id: string, update: any): Observable<any> {
+		return this.http.patch([COMPLAINT, _id].join('/'), update);
+	}
+
 	postComplaint(data: any): Observable<{ inserted: boolean; referenceToken: string }> {
 		return this.http.post<{ inserted: boolean; referenceToken: string }>(COMPLAINT, data);
 	}
