@@ -8,7 +8,7 @@ import { ComplaintComponent } from './complaint/complaint.component';
 @Component({
 	selector: 'ttnd-complaints',
 	templateUrl: './complaints.component.html',
-	styleUrls: ['./complaints.component.css', '../common.css']
+	styleUrls: ['../common.css', './complaints.component.css']
 })
 export class ComplaintsComponent implements OnInit {
 	readonly complaint = ComplaintComponent;
@@ -16,6 +16,7 @@ export class ComplaintsComponent implements OnInit {
 	departmentList: Array<Department> = [];
 	allowedFileTypes: Array<string> = ['image/jpeg', 'image/png', 'text/plain', 'application/pdf'];
 	uploadedFiles: Array<File> = [];
+	complaintsFilter: any = {};
 
 	invalidFile: boolean = false;
 	postingComplaint: boolean = false;
@@ -115,5 +116,9 @@ export class ComplaintsComponent implements OnInit {
 	reset() {
 		this.invalidFile = false;
 		this.uploadedFiles = [];
+	}
+
+	getFilterData(event: any) {
+		this.complaintsFilter = event;
 	}
 }

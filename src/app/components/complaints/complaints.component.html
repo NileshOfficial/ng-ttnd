@@ -74,18 +74,16 @@
 			</div>
 		</div>
 	</div>
-	<ttnd-infinite [repeat]="complaint" [dataService]="complaintApi" [limit]="5"></ttnd-infinite>
-	<!-- <div class="posts card" style="flex: 1;">
+	<div class="complaints card">
 		<div class="header differentiate-bottom">
 			<h4>feed</h4>
-			<div class="dropdown-select">
-				<select defaultFont>
-					<option value="" [defaultSelected]="true">Select Category</option>
-					<option value="activity">Activity</option>
-					<option value="lost and found">Lost and Found</option>
-				</select>
-			</div>
+			<ttnd-complaint-filter (filterData)="getFilterData($event)"></ttnd-complaint-filter>
 		</div>
-		<ttnd-infinite [dataService]="api" [subscribeToArgs]="categoryFilter" [limit]="5" [repeat]="buzzPostComponent"></ttnd-infinite>
-	</div> -->
+		<ttnd-infinite
+			[repeat]="complaint"
+			[dataService]="complaintApi"
+			[subscribeToArgs]="complaintsFilter"
+			[limit]="5"
+		></ttnd-infinite>
+	</div>
 </div>

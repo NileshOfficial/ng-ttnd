@@ -46,3 +46,15 @@
     top: 5px;
     right: 5px;
 }
+
+.complaints {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.header {
+    display: block;
+    padding: 3rem;
+    height: unset;
+    margin-bottom: 0;
+}
