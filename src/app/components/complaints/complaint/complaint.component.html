@@ -40,11 +40,20 @@
 		<span class="link-heavy text-title">status</span>
 		<span class="text-title" *ngIf="editableBy === 'user' || editableBy === 'view'">{{ data.status }}</span>
 		<div *ngIf="editableBy === 'admin'">
-			<div class="dropdown-select" (click)="statusChange($event)">
+			<div class="dropdown-select">
 				<select #statusDropdown>
-					<option value="open">Open</option>
-					<option value="in progress">In Progress</option>
-					<option value="closed">Closed</option>
+					<option value="open" [selected]="data.status === 'open'" (click)="statusChange($event)"
+						>Open</option
+					>
+					<option
+						value="in progress"
+						[selected]="data.status === 'in progress'"
+						(click)="statusChange($event)"
+						>In Progress</option
+					>
+					<option value="resolved" [selected]="data.status === 'resolved'" (click)="statusChange($event)"
+						>Resolved</option
+					>
 				</select>
 			</div>
 		</div>
@@ -81,8 +90,11 @@
 				</button>
 			</div>
 		</form>
-		<div class="overlay" *ngIf="updatingStatus">
+		<div class="overlay" *ngIf="updatingStatus || updatingStatusErr">
 			<ttnd-spinner *ngIf="updatingStatus"></ttnd-spinner>
+			<span class="text-danger message" *ngIf="updatingStatusErr">
+				Something went wrong, try refreshing page or contact administrator.
+			</span>
 		</div>
 	</div>
 </div>
