@@ -346,6 +346,27 @@ form .close {
 	right: 1rem;
 }
 
+form.filters {
+	display: flex;
+	align-items: center;
+}
+
+form.filters .input-group {
+    flex: 2;
+}
+
+form.filters .input-group > * {
+	width: 100%;
+}
+
+form.filters .input-group label {
+	font-size: 1.2rem;
+}
+
+form.filters .controls {
+    flex: 1;
+}
+
 .overlay {
 	position: absolute;
 	top: 0;
