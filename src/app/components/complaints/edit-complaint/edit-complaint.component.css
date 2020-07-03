@@ -1,0 +1,39 @@
+.form-container {
+    display: flex;
+    margin-right: 3rem;
+}
+
+.form-container .dropdown-select {
+    width: 50%;
+    margin-bottom: 1rem;
+}
+
+.form-container textarea {
+    width: calc(100% - 42px);
+}
+
+.form-container .controls {
+    width: 100%;
+}
+
+.content > * {
+    flex: 1;
+}
+
+.ng-touched.ng-invalid {
+    box-shadow: 0 0 4px #f00;
+}
+
+.complaint-id {
+    position: relative;
+    padding: 3rem 4rem;
+    text-align: center;
+    width: fit-content;
+    font-size: 1.6rem;
+}
+
+.complaint-id .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
