@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Department } from 'src/app/models/department.model';
 import { Complaint } from 'src/app/models/complaint.model';
 import { ComplaintapiService } from 'src/app/services/apis/complaintapi.service';
-import { DepartmentapiService } from 'src/app/services/apis/departmentapi.service';
 
 @Component({
 	selector: 'ttnd-edit-complaint',
@@ -11,11 +10,11 @@ import { DepartmentapiService } from 'src/app/services/apis/departmentapi.servic
 	styleUrls: ['./edit-complaint.component.css', '../../common.css']
 })
 export class EditComplaintComponent implements OnInit {
-  @Input() complaintData: Complaint = null;
-  @Output() close: EventEmitter<boolean> = new EventEmitter();
+	@Input() complaintData: Complaint = null;
+	@Input() departmentList: Array<Department> = [];
+	@Output() close: EventEmitter<boolean> = new EventEmitter();
 
-  departmentList: Array<Department> = [];
-  complaintForm: FormGroup = null;
+	complaintForm: FormGroup = null;
 	allowedFileTypes: Array<string> = ['image/jpeg', 'image/png', 'text/plain', 'application/pdf'];
 	uploadedFiles: Array<File> = [];
 
@@ -23,22 +22,14 @@ export class EditComplaintComponent implements OnInit {
 	postingComplaint: boolean = false;
 	err: boolean = false;
 
-	constructor(public complaintApi: ComplaintapiService, private deptApi: DepartmentapiService) {}
+	constructor(public complaintApi: ComplaintapiService) {}
 
 	ngOnInit(): void {
-		this.deptApi.getDepartments().subscribe(
-			(data) => {
-				this.departmentList = data;
-			},
-			(err) => {
-				console.log(err);
-			}
-		);
-
+		const deptId = this.complaintData.department._id;
 		this.complaintForm = new FormGroup({
-			department: new FormControl('', [Validators.required]),
-			title: new FormControl('', [Validators.required]),
-			description: new FormControl('', [Validators.required])
+			department: new FormControl(deptId, [Validators.required]),
+			title: new FormControl(this.complaintData.title, [Validators.required]),
+			description: new FormControl(this.complaintData.description, [Validators.required])
 		});
 	}
 
@@ -46,7 +37,7 @@ export class EditComplaintComponent implements OnInit {
 		if (this.complaintForm.valid && !this.invalidFile) {
 			this.showLoader();
 			const data = this.prepareDataToPost();
-			this.complaintApi.postComplaint(data).subscribe(
+			this.complaintApi.updateComplaint(this.complaintData._id, data).subscribe(
 				(data) => {
 					console.log(data);
 					this.complaintForm.reset({
@@ -112,7 +103,7 @@ export class EditComplaintComponent implements OnInit {
 
 	reset() {
 		this.invalidFile = false;
-    this.uploadedFiles = [];
-    this.close.emit(true);
+		this.uploadedFiles = [];
+		this.close.emit(true);
 	}
 }

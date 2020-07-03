@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ComplaintapiService } from 'src/app/services/apis/complaintapi.service';
 import { Complaint } from 'src/app/models/complaint.model';
+import { DepartmentapiService } from 'src/app/services/apis/departmentapi.service';
+import { Department } from 'src/app/models/department.model';
 
 @Component({
 	selector: 'ttnd-complaint',
@@ -12,9 +14,30 @@ export class ComplaintComponent implements OnInit {
 	@Input() data: Complaint = null;
 	@Output() reload: EventEmitter<boolean> = new EventEmitter();
 
-	constructor(private complaintApi: ComplaintapiService) {}
+	departmentList: Array<Department> = [];
 
-	ngOnInit(): void {}
+	showEditForm: boolean = false;
+
+	constructor(private complaintApi: ComplaintapiService, private deptApi: DepartmentapiService) {}
+
+	ngOnInit(): void {
+		this.deptApi.getDepartments().subscribe(
+			(data) => {
+				this.departmentList = data;
+			},
+			(err) => {
+				console.log(err);
+			}
+		);
+	}
+
+	editFormPopup() {
+		this.showEditForm = true;
+	}
+
+	hideEditForm() {
+		this.showEditForm = false;
+	}
 
 	deleteComplaint() {
 		this.complaintApi.deleteComplaint(this.data._id).subscribe(
