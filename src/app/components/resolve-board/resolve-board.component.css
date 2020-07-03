@@ -1,0 +1,18 @@
+.card {
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+.header {
+    display: block;
+    padding: 3rem;
+    height: unset;
+}
+
+form.filters {
+    margin-top: 1rem;
+}
+
+.offset {
+    margin-left: 2.4rem;
+}
