@@ -39,7 +39,6 @@ export class EditComplaintComponent implements OnInit {
 			const data = this.prepareDataToPost();
 			this.complaintApi.updateComplaint(this.complaintData._id, data).subscribe(
 				(data) => {
-					console.log(data);
 					this.complaintForm.reset({
 						department: '',
 						title: ''
