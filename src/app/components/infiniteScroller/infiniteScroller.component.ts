@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 export class InfiniteScrollerComponent implements OnInit, OnChanges {
 	@Input() repeat: Type<unknown>;
 	@Input() dataService: any;
+	@Input() dataServiceFn: string = '';
 	@Input() dataBindings: { [k: string]: any } = {};
 	@Input() eventBindings: { [k: string]: Function } = {};
 	@Input() subscribeToArgs: any = {};
@@ -36,7 +37,7 @@ export class InfiniteScrollerComponent implements OnInit, OnChanges {
 	onScroll(): void {
 		if (!this.subscription && !this.stopScrolling) {
 			this.showLoader = true;
-			this.dataService.get(this.subscribeToArgs, this.skip, this.limit).subscribe(
+			this.dataService[this.dataServiceFn || 'get'](this.subscribeToArgs, this.skip, this.limit).subscribe(
 				(data) => {
 					this.showLoader = false;
 					this.data.push(...data);
