@@ -23,4 +23,8 @@ export class ComplaintapiService {
 	postComplaint(data: any): Observable<{ inserted: boolean; referenceToken: string }> {
 		return this.http.post<{ inserted: boolean; referenceToken: string }>(COMPLAINT, data);
 	}
+
+	deleteComplaint(_id: string): Observable<any> {
+		return this.http.delete([COMPLAINT, _id].join('/'));
+	}
 }
