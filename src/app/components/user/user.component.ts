@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Department } from 'src/app/models/department.model';
 import { User } from 'src/app/models/user.model';
 import { PROFILE_PIC } from '../../config/uri.conf';
+import { UserapiService } from 'src/app/services/apis/userapi.service';
 
 @Component({
 	selector: 'ttnd-user',
@@ -13,10 +14,17 @@ export class UserComponent implements OnInit {
 	@Input() departmentList: Array<Department> = [];
 	@Output() reload: EventEmitter<boolean> = new EventEmitter();
 
-	constructor() {}
+	constructor(private userApi: UserapiService) {}
 
 	ngOnInit(): void {
-		console.log(this.data);
 		this.data.picture = [PROFILE_PIC, this.data.picture].join('/');
+	}
+
+	updatePrivileges(key: string, event: any) {
+		const value = event.target.value;
+		this.userApi.updatePrivileges(this.data.email, { [key]: value }).subscribe(
+			(data) => {},
+			(err) => console.log(err)
+		);
 	}
 }

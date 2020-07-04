@@ -7,12 +7,12 @@
 			{{ data.name }}
 			<span class="message">({{ data.email }})</span>
 		</h4>
-		<div class="field">
+		<div class="field" *ngIf="data.role !== 'su'">
 			<span class="text-title link-heavy">
 				department
 			</span>
 			<div class="dropdown-select">
-				<select>
+				<select (change)="updatePrivileges('department', $event)">
 					<option value="notAssigned" [selected]="!data.department">Not Assigned/Unavailable</option>
 					<option
 						value="{{ department._id }}"
@@ -28,7 +28,7 @@
 				role
 			</span>
 			<div class="dropdown-select">
-				<select>
+				<select (change)="updatePrivileges('role', $event)">
 					<option value="user" [selected]="data.role === 'user'">User</option>
 					<option value="admin" [selected]="data.role === 'admin'">Admin</option>
 					<option value="su" [selected]="data.role === 'su'">Super User</option>
