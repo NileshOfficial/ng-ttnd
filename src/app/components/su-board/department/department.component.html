@@ -13,7 +13,7 @@
     <div class="edit-dept" *ngIf="editingDept">
         <input class="text-primary text-caps" type="text" #dept>
         <div class="controls">
-            <button class="fab-icon fab-icon-md text-primary">
+            <button class="fab-icon fab-icon-md text-primary" (click)="updateDept(dept)">
                 <i class="fal fa-check"></i>
             </button>
             <button class="fab-icon fab-icon-md text-danger" (click)="hideEditInput()">

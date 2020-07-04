@@ -8,13 +8,10 @@ import { DepartmentapiService } from 'src/app/services/apis/departmentapi.servic
 	styleUrls: ['../../common.css', './department.component.css']
 })
 export class DepartmentComponent implements OnInit {
-	deparmentEditInput: ElementRef;
-
 	@ViewChild('dept') set content(content: ElementRef) {
 		if (content) {
-      this.deparmentEditInput = content;
-      this.deparmentEditInput.nativeElement.focus();
-			this.deparmentEditInput.nativeElement.value = this.data.name;
+			content.nativeElement.value = this.data.name;
+			content.nativeElement.focus();
 		}
 	}
 
@@ -39,6 +36,21 @@ export class DepartmentComponent implements OnInit {
 		this.deptApi.deleteDeparment(this.data._id).subscribe(
 			(data) => {
 				this.reload.emit(true);
+			},
+			(err) => {
+				console.log(err);
+			}
+		);
+	}
+
+	updateDept(input: HTMLInputElement) {
+		const name = input.value;
+		this.deptApi.updateDepartment(this.data._id, { name }).subscribe(
+			(data) => {
+				const updatedData = this.data;
+				updatedData.name = name;
+				this.data = updatedData;
+				this.hideEditInput();
 			},
 			(err) => {
 				console.log(err);
