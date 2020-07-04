@@ -19,4 +19,8 @@ export class DepartmentapiService {
 		const params = new HttpParams({ fromObject: constructedQuery });
 		return this.http.get<Array<Department>>(DEPARTMENT, { params: params });
 	}
+
+	deleteDeparment(_id: string): Observable<any> {
+		return this.http.delete([DEPARTMENT, _id].join('/'));
+	}
 }
