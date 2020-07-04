@@ -3,6 +3,7 @@ import { getBuzzForm } from './buzz.form';
 import { FormGroup } from '@angular/forms';
 import { BuzzapiService } from '../../services/apis/buzzapi.service';
 import { BuzzPostComponent } from './buzzpost/buzzpost.component';
+import { InfiniteScrollerComponent } from '../infiniteScroller/infiniteScroller.component';
 
 @Component({
 	selector: 'ttnd-buzz',
@@ -26,7 +27,7 @@ export class BuzzComponent implements OnInit {
 
 	ngOnInit(): void {}
 
-	createBuzz() {
+	createBuzz(buzzList: InfiniteScrollerComponent) {
 		if (this.buzzForm.valid && !this.invalidFile) {
 			this.showLoader()
 			const data = this.prepareDataToPost();
@@ -36,6 +37,7 @@ export class BuzzComponent implements OnInit {
 						category: ''
 					});
 					this.hideLoader();
+					buzzList.reload();
 				},
 				(err) => {
 					console.log(err);
