@@ -3,7 +3,7 @@
 </div>
 <div class="content">
 	<div class="form-container">
-		<form class="create card" [formGroup]="complaintForm" (ngSubmit)="createComplaint()">
+		<form class="create card" [formGroup]="complaintForm" (ngSubmit)="createComplaint(complaintList)">
 			<div class="dropdown-select m-rt-gap">
 				<select defaultFont formControlName="department">
 					<option value="" [defaultSelected]="true">Select Department</option>
@@ -80,6 +80,7 @@
 			<ttnd-complaint-filter (filterData)="getFilterData($event)"></ttnd-complaint-filter>
 		</div>
 		<ttnd-infinite
+			#complaintList
 			[repeat]="complaint"
 			[dataService]="complaintApi"
 			[subscribeToArgs]="complaintsFilter"

@@ -4,6 +4,7 @@ import { DepartmentapiService } from 'src/app/services/apis/departmentapi.servic
 import { Department } from 'src/app/models/department.model';
 import { ComplaintapiService } from 'src/app/services/apis/complaintapi.service';
 import { ComplaintComponent } from './complaint/complaint.component';
+import { InfiniteScrollerComponent } from '../infiniteScroller/infiniteScroller.component';
 
 @Component({
 	selector: 'ttnd-complaints',
@@ -44,7 +45,7 @@ export class ComplaintsComponent implements OnInit {
 		});
 	}
 
-	createComplaint() {
+	createComplaint(complaintList: InfiniteScrollerComponent) {
 		if (this.complaintForm.valid && !this.invalidFile) {
 			this.showLoader();
 			const data = this.prepareDataToPost();
@@ -57,6 +58,7 @@ export class ComplaintsComponent implements OnInit {
 					});
 					this.referalId = data.referenceToken;
 					this.hideLoader();
+					complaintList.reload();
 				},
 				(err) => {
 					console.log(err);
