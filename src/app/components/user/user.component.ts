@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Department } from 'src/app/models/department.model';
-import { UserapiService } from 'src/app/services/apis/userapi.service';
 import { User } from 'src/app/models/user.model';
+import { PROFILE_PIC } from '../../config/uri.conf';
 
 @Component({
 	selector: 'ttnd-user',
@@ -9,11 +9,14 @@ import { User } from 'src/app/models/user.model';
 	styleUrls: ['../common.css', './user.component.css']
 })
 export class UserComponent implements OnInit {
-	data: User = null;
-  departmentList: Array<Department> = [];
+	@Input() data: User = null;
+	@Input() departmentList: Array<Department> = [];
+	@Output() reload: EventEmitter<boolean> = new EventEmitter();
 
 	constructor() {}
 
 	ngOnInit(): void {
+		console.log(this.data);
+		this.data.picture = [PROFILE_PIC, this.data.picture].join('/');
 	}
 }

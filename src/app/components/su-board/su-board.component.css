@@ -11,7 +11,7 @@
 	width: calc(100% - 50px);
 }
 
-.complaint .header {
+.complaint .header, .user .header {
 	display: block;
 	padding: 3rem;
 	height: unset;

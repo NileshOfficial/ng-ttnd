@@ -57,4 +57,17 @@
 			[limit]="5"
 		></ttnd-infinite>
 	</div>
+	<div class="user card" *ngIf="currentView === 'users'">
+		<div class="header differentiate-bottom">
+			<h4>departments</h4>
+			<ttnd-complaint-filter (filterData)="getComplaintsFilter($event)"></ttnd-complaint-filter>
+		</div>
+		<ttnd-infinite
+			[repeat]="user"
+			[dataService]="userApi"
+			[dataServiceFn]="'getUsers'"
+			[dataBindings]="userDataBindings"
+			[limit]="5"
+		></ttnd-infinite>
+	</div>
 </div>

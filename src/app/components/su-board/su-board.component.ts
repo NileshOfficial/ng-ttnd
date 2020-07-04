@@ -5,6 +5,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { InfiniteScrollerComponent } from '../infiniteScroller/infiniteScroller.component';
 import { ComplaintComponent } from '../complaints/complaint/complaint.component';
 import { ComplaintapiService } from 'src/app/services/apis/complaintapi.service';
+import { UserComponent } from '../user/user.component';
+import { UserapiService } from '../../services/apis/userapi.service';
+import { Department } from 'src/app/models/department.model';
 
 @Component({
 	selector: 'ttnd-su-board',
@@ -14,17 +17,34 @@ import { ComplaintapiService } from 'src/app/services/apis/complaintapi.service'
 export class SuBoardComponent implements OnInit {
 	readonly department = DepartmentComponent;
 	readonly complaint = ComplaintComponent;
+	readonly user = UserComponent;
 
 	addDepartmentForm: FormGroup;
 
 	complaintsFilter: any = {};
 	complaintDataBindings: any = {};
 
-	currentView: string = 'departments';
+	userDataBindings: any = {};
 
-	constructor(public deptApi: DepartmentapiService, public complaintApi: ComplaintapiService) {}
+	currentView: string = 'users';
+	departmentList: Array<Department> = [];
+
+	constructor(
+		public deptApi: DepartmentapiService,
+		public complaintApi: ComplaintapiService,
+		public userApi: UserapiService
+	) {}
 
 	ngOnInit(): void {
+		this.deptApi.getDepartments().subscribe(
+			(data) => {
+				this.userDataBindings = {
+					departmentList: data
+				}
+			},
+			(err) => console.log(err)
+		);
+
 		this.addDepartmentForm = new FormGroup({
 			name: new FormControl('', [Validators.required])
 		});

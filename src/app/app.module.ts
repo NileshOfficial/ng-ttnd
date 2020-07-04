@@ -37,6 +37,7 @@ import { ResolveBoardComponent } from './components/resolve-board/resolve-board.
 import { ComplaintFilterComponent } from './components/complaint-filter/complaint-filter.component';
 import { SuBoardComponent } from './components/su-board/su-board.component';
 import { DepartmentComponent } from './components/su-board/department/department.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
 	declarations: [
@@ -69,7 +70,8 @@ import { DepartmentComponent } from './components/su-board/department/department
 		ResolveBoardComponent,
 		ComplaintFilterComponent,
 		SuBoardComponent,
-		DepartmentComponent
+		DepartmentComponent,
+		UserComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, InfiniteScrollModule, ReactiveFormsModule],
 	providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestHeaderService, multi: true }],
