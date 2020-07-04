@@ -18,3 +18,24 @@
     top: 1rem;
     right: 1rem;
 }
+
+.edit-dept {
+    position: relative;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.edit-dept input {
+    padding: 0 110px 0 0;
+    height: 100%;
+    font-size: 3.6rem;
+    text-align: center;
+}
+
+.edit-dept .controls {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}

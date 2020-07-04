@@ -1,13 +1,24 @@
 <div class="card differentiate-bottom">
 	<div class="controls">
-		<button class="fab-icon fab-icon-md">
+		<button class="fab-icon fab-icon-md" (click)="editDepartment()">
 			<i class="fal fa-pencil"></i>
 		</button>
 		<button class="fab-icon fab-icon-md" (click)="deleteDept()">
 			<i class="fal fa-trash"></i>
 		</button>
 	</div>
-	<h3 class="text-caps text-primary">
-		{{ data.name }}
-	</h3>
+	<h3 class="text-caps text-primary" *ngIf="!editingDept">
+        {{ data.name }}
+    </h3>
+    <div class="edit-dept" *ngIf="editingDept">
+        <input class="text-primary text-caps" type="text" #dept>
+        <div class="controls">
+            <button class="fab-icon fab-icon-md text-primary">
+                <i class="fal fa-check"></i>
+            </button>
+            <button class="fab-icon fab-icon-md text-danger" (click)="hideEditInput()">
+                <i class="fal fa-times"></i>
+            </button>
+        </div>
+    </div>
 </div>
