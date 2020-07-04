@@ -60,13 +60,48 @@
 	<div class="user card" *ngIf="currentView === 'users'">
 		<div class="header differentiate-bottom">
 			<h4>departments</h4>
-			<ttnd-complaint-filter (filterData)="getComplaintsFilter($event)"></ttnd-complaint-filter>
+			<div class="filters">
+				<form class="filters" [formGroup]="userFiltersForm" (ngSubmit)="applyUserFilters()">
+					<div class="input-group">
+						<label class="offset text-title">select department</label>
+						<div class="dropdown-select">
+							<select defaultFont formControlName="department">
+								<option [ngValue]="''" [defaultSelected]="true">Select Department</option>
+								<option [ngValue]="'notAssigned'">Not Assigned</option>
+								<option [ngValue]="department._id" *ngFor="let department of departmentList">{{
+									department.name | uppercase
+								}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="input-group">
+						<label class="offset text-title">select role</label>
+						<div class="dropdown-select">
+							<select defaultFont formControlName="role">
+								<option [ngValue]="''" [defaultSelected]="true">Select Role</option>
+								<option [ngValue]="'user'">User</option>
+								<option [ngValue]="'admin'">Admin</option>
+								<option [ngValue]="'su'">Super User</option>
+							</select>
+						</div>
+					</div>
+					<div class="controls">
+						<button class="fab-icon fab-icon-md text-primary" type="submit">
+							<i class="fal fa-check"></i>
+						</button>
+						<button class="fab-icon fab-icon-md text-danger" type="reset" (click)="resetUserFilters()">
+							<i class="fal fa-undo"></i>
+						</button>
+					</div>
+				</form>
+			</div>
 		</div>
 		<ttnd-infinite
 			[repeat]="user"
 			[dataService]="userApi"
 			[dataServiceFn]="'getUsers'"
 			[dataBindings]="userDataBindings"
+			[subscribeToArgs]="userFilters"
 			[limit]="5"
 		></ttnd-infinite>
 	</div>

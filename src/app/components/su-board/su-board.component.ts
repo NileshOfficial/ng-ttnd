@@ -25,6 +25,8 @@ export class SuBoardComponent implements OnInit {
 	complaintDataBindings: any = {};
 
 	userDataBindings: any = {};
+	userFiltersForm: FormGroup = null;
+	userFilters: any = { department: 'notAssigned' };
 
 	currentView: string = 'users';
 	departmentList: Array<Department> = [];
@@ -38,12 +40,18 @@ export class SuBoardComponent implements OnInit {
 	ngOnInit(): void {
 		this.deptApi.getDepartments().subscribe(
 			(data) => {
+				this.departmentList = data;
 				this.userDataBindings = {
 					departmentList: data
-				}
+				};
 			},
 			(err) => console.log(err)
 		);
+
+		this.userFiltersForm = new FormGroup({
+			department: new FormControl('notAssigned'),
+			role: new FormControl('')
+		});
 
 		this.addDepartmentForm = new FormGroup({
 			name: new FormControl('', [Validators.required])
@@ -78,5 +86,17 @@ export class SuBoardComponent implements OnInit {
 	getComplaintsFilter(event: any) {
 		event.all = 1;
 		this.complaintsFilter = event;
+	}
+
+	applyUserFilters() {
+		const filters = Object.entries(this.userFiltersForm.value).reduce(
+			(a, [k, v]) => (v ? ((a[k] = v), a) : a),
+			{}
+		);
+		this.userFilters = filters;
+	}
+
+	resetUserFilters() {
+		this.userFilters = {};
 	}
 }

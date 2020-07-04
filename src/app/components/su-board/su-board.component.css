@@ -17,3 +17,11 @@
 	height: unset;
 	margin-bottom: 0;
 }
+
+.filters {
+	margin-top: 1rem;
+}
+
+.offset {
+	margin-left: 2.4rem;
+}
