@@ -13,6 +13,7 @@ export const UPDATE_DISLIKE: string = getEndpoint('buzz/dislike');
 export const USER: string = getEndpoint('user');
 export const USER_PICTURE: string = getEndpoint('user/picture');
 export const PROFILE_PIC: string = getEndpoint('profile');
+export const USER_PRIVILEGES: string = getEndpoint('user/privileges')
 
 export const DEPARTMENT: string = getEndpoint('department');
 
