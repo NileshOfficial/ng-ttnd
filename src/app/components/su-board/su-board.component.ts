@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentapiService } from 'src/app/services/apis/departmentapi.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { InfiniteScrollerComponent } from '../infiniteScroller/infiniteScroller.component';
 
 @Component({
 	selector: 'ttnd-su-board',
@@ -20,11 +21,12 @@ export class SuBoardComponent implements OnInit {
 		});
 	}
 
-	addNewDept() {
+	addNewDept(deptList: InfiniteScrollerComponent) {
 		if (this.addDepartmentForm.valid)
 			this.deptApi.addDepartment(this.addDepartmentForm.value).subscribe(
 				(data) => {
-					console.log(data);
+          console.log(data);
+          deptList.reload();
 				},
 				(err) => {
 					console.log(err);

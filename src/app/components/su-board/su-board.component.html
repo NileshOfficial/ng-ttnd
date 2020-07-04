@@ -13,7 +13,7 @@
 	<div class="deptarments card">
 		<div class="header differentiate-bottom">
 			<h4>departments</h4>
-			<form class="filters" [formGroup]="addDepartmentForm" (ngSubmit)="addNewDept()">
+			<form class="filters" [formGroup]="addDepartmentForm" (ngSubmit)="addNewDept(deptList)">
 				<div>
 					<input formControlName="name" type="text" placeholder="Type in the new deparment name">
 				</div>
@@ -22,6 +22,6 @@
 				</button>
 			</form>
 		</div>
-		<ttnd-infinite [repeat]="department" [dataService]="deptApi" [dataServiceFn]="'getDepartments'"></ttnd-infinite>
+		<ttnd-infinite #deptList [repeat]="department" [dataService]="deptApi" [dataServiceFn]="'getDepartments'"></ttnd-infinite>
 	</div>
 </div>
