@@ -1,0 +1,9 @@
+<div class="overlay fullscreen" *ngIf="show">
+	<div class="card">
+		<span class="message">{{ message }}</span>
+		<div class="controls">
+			<button class="btn btn-danger" (click)="proceed(true)">proceed</button>
+			<button class="btn btn-primary" (click)="proceed(false)">cancel</button>
+		</div>
+	</div>
+</div>

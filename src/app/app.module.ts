@@ -38,6 +38,7 @@ import { ComplaintFilterComponent } from './components/complaint-filter/complain
 import { SuBoardComponent } from './components/su-board/su-board.component';
 import { DepartmentComponent } from './components/su-board/department/department.component';
 import { UserComponent } from './components/user/user.component';
+import { ConfirmationComponent } from './components/genericComponents/confirmation/confirmation.component';
 
 @NgModule({
 	declarations: [
@@ -71,7 +72,8 @@ import { UserComponent } from './components/user/user.component';
 		ComplaintFilterComponent,
 		SuBoardComponent,
 		DepartmentComponent,
-		UserComponent
+		UserComponent,
+		ConfirmationComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, InfiniteScrollModule, ReactiveFormsModule],
 	providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestHeaderService, multi: true }],

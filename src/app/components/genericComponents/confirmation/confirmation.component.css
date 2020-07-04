@@ -1,0 +1,16 @@
+.card {
+    padding: 3rem;
+    border-radius: 8px;
+    min-width: 350px;
+}
+
+.card .message {
+    margin-bottom: 1rem;
+}
+
+.card .controls {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    bottom: -1rem;
+}
