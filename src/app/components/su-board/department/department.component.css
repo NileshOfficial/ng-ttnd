@@ -6,6 +6,7 @@
     width: 100%;
     padding: 3rem;
     position: relative;
+    border-radius: 0;
 }
 
 .card h3 {
