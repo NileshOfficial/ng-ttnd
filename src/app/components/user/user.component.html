@@ -1,0 +1,39 @@
+<div class="card">
+	<div class="user-img">
+        <img src="../../../assets/images/agility.png">
+    </div>
+	<div class="info">
+		<h4 class="text-primary" [routerLink]="['/home', 'profile']" [state]="{email: 'nilesh22.a67@gmail.com'}">
+			{{data.name}}
+			<span class="message">({{data.email}})</span>
+		</h4>
+		<div class="field">
+			<span class="text-title link-heavy">
+				department
+			</span>
+			<div>
+				<div class="dropdown-select">
+					<select>
+						<option value="{{ department._id }}" *ngFor="let department of departmentList">{{
+							department.name
+						}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="field">
+			<span class="text-title link-heavy">
+				role
+			</span>
+			<div>
+				<div class="dropdown-select">
+					<select>
+						<option value="user" [selected]="data.role === 'user'">User</option>
+						<option value="admin" [selected]="data.role === 'admin'">Admin</option>
+						<option value="su" [selected]="data.role === 'su'">Super User</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

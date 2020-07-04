@@ -1,0 +1,47 @@
+:host {
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.user-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 3rem;
+}
+
+.user-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.info h4 {
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.info h4 span {
+    text-transform: lowercase;
+}
+
+.info .field {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.info .field > * {
+    flex: 1;
+}
+
+.link-heavy {
+    cursor: default;
+}
