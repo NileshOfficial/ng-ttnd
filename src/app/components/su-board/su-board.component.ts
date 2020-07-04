@@ -13,6 +13,8 @@ export class SuBoardComponent implements OnInit {
 	readonly department = DepartmentComponent;
 	addDepartmentForm: FormGroup;
 
+	currentView: string = 'departments';
+
 	constructor(public deptApi: DepartmentapiService) {}
 
 	ngOnInit(): void {
@@ -25,12 +27,16 @@ export class SuBoardComponent implements OnInit {
 		if (this.addDepartmentForm.valid)
 			this.deptApi.addDepartment(this.addDepartmentForm.value).subscribe(
 				(data) => {
-          console.log(data);
-          deptList.reload();
+					console.log(data);
+					deptList.reload();
 				},
 				(err) => {
 					console.log(err);
 				}
 			);
+	}
+
+	changeView(view: string) {
+		this.currentView = view;
 	}
 }

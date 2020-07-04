@@ -1,5 +1,5 @@
 .active {
-    background-color: rbga(0, 0, 0, 0.09);
+    background-color: rgba(0, 0, 0, 0.09);
 }
 
 .content .header .add-dept {
