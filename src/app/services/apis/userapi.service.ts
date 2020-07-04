@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { USER, USER_PICTURE } from '../../config/uri.conf';
+import { USER, USER_PICTURE, USER_PRIVILEGES } from '../../config/uri.conf';
 import { User } from 'src/app/models/user.model';
 
 @Injectable({
@@ -27,5 +27,9 @@ export class UserapiService {
 
 	updateProfile(profileData: any): Observable<{ id_token: string }> {
 		return this.http.patch<{ id_token: string }>(USER, profileData);
+	}
+
+	updatePrivileges(email: string, privileges: any): Observable<any> {
+		return this.http.patch([USER_PRIVILEGES, email].join('/'), privileges);
 	}
 }
