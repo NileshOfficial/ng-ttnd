@@ -10,5 +10,18 @@
 	</div>
 </div>
 <div class="content">
-	<ttnd-infinite [repeat]="department" [dataService]="deptApi" [dataServiceFn]="'getDepartments'"></ttnd-infinite>
+	<div class="deptarments card">
+		<div class="header differentiate-bottom">
+			<h4>departments</h4>
+			<form class="filters" [formGroup]="addDepartmentForm" (ngSubmit)="addNewDept()">
+				<div>
+					<input formControlName="name" type="text" placeholder="Type in the new deparment name">
+				</div>
+				<button class="fab-icon fab-icon-md" type="submit">
+					<i class="fal fa-plus"></i>
+				</button>
+			</form>
+		</div>
+		<ttnd-infinite [repeat]="department" [dataService]="deptApi" [dataServiceFn]="'getDepartments'"></ttnd-infinite>
+	</div>
 </div>
