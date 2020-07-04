@@ -1,12 +1,19 @@
 .active {
-    background-color: rgba(0, 0, 0, 0.09);
+	background-color: rgba(0, 0, 0, 0.09);
 }
 
 .content .header .add-dept {
-    display: flex;
-    width: max-content;
+	display: flex;
+	width: max-content;
 }
 
 .content .header .add-dept input {
-    width: calc(100% - 50px);
+	width: calc(100% - 50px);
+}
+
+.complaint .header {
+	display: block;
+	padding: 3rem;
+	height: unset;
+	margin-bottom: 0;
 }

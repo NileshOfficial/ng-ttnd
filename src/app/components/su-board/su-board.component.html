@@ -4,28 +4,28 @@
 		<button
 			class="btn btn-primary btn-dark"
 			(click)="changeView('users')"
-			[ngClass]="{ 'active': currentView === 'users' }"
+			[ngClass]="{ active: currentView === 'users' }"
 		>
 			users
 		</button>
 		<button
 			class="btn btn-primary btn-dark"
 			(click)="changeView('departments')"
-			[ngClass]="{ 'active': currentView === 'departments' }"
+			[ngClass]="{ active: currentView === 'departments' }"
 		>
 			departments
 		</button>
 		<button
 			class="btn btn-primary btn-dark"
 			(click)="changeView('complaints')"
-			[ngClass]="{ 'active': currentView === 'complaints' }"
+			[ngClass]="{ active: currentView === 'complaints' }"
 		>
 			complaints log
 		</button>
 	</div>
 </div>
 <div class="content">
-	<div class="deptarments card" *ngIf="currentView === 'departments'">
+	<div class="card" *ngIf="currentView === 'departments'">
 		<div class="header differentiate-bottom">
 			<h4>departments</h4>
 			<form class="filters" [formGroup]="addDepartmentForm" (ngSubmit)="addNewDept(deptList)">
@@ -42,6 +42,19 @@
 			[repeat]="department"
 			[dataService]="deptApi"
 			[dataServiceFn]="'getDepartments'"
+		></ttnd-infinite>
+	</div>
+	<div class="complaint card" *ngIf="currentView === 'complaints'">
+		<div class="header differentiate-bottom">
+			<h4>departments</h4>
+			<ttnd-complaint-filter (filterData)="getComplaintsFilter($event)"></ttnd-complaint-filter>
+		</div>
+		<ttnd-infinite
+			[repeat]="complaint"
+			[dataService]="complaintApi"
+			[dataBindings]="complaintDataBindings"
+			[subscribeToArgs]="complaintsFilter"
+			[limit]="5"
 		></ttnd-infinite>
 	</div>
 </div>
