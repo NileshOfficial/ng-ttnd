@@ -27,4 +27,8 @@ export class DepartmentapiService {
 	addDepartment(data: { name: string }): Observable<any> {
 		return this.http.post(DEPARTMENT, data);
 	}
+
+	updateDepartment(_id: string, update: { name: string }): Observable<any> {
+		return this.http.patch([DEPARTMENT, _id].join('/'), update);
+	}
 }
