@@ -23,4 +23,8 @@ export class DepartmentapiService {
 	deleteDeparment(_id: string): Observable<any> {
 		return this.http.delete([DEPARTMENT, _id].join('/'));
 	}
+
+	addDepartment(data: { name: string }): Observable<any> {
+		return this.http.post(DEPARTMENT, data);
+	}
 }
