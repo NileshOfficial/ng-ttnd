@@ -1,0 +1,19 @@
+:host {
+    display: block;
+    width: 100%;
+}
+.card {
+    width: 100%;
+    padding: 3rem;
+    position: relative;
+}
+
+.card h3 {
+    text-align: center;
+}
+
+.card .controls {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
