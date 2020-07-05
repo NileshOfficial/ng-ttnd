@@ -35,18 +35,21 @@ export class InfiniteScrollerComponent implements OnInit, OnChanges {
 	}
 
 	onScroll(): void {
+		// console.log(this.subscription, this.stopScrolling)
 		if (!this.subscription && !this.stopScrolling) {
+			console.log(this.skip);
 			this.showLoader = true;
-			this.dataService[this.dataServiceFn || 'get'](this.subscribeToArgs, this.skip, this.limit).subscribe(
+			this.subscription = this.dataService[this.dataServiceFn || 'get'](this.subscribeToArgs, this.skip, this.limit).subscribe(
 				(data) => {
 					this.showLoader = false;
 					this.data.push(...data);
 					this.skip += this.limit;
-
+					this.subscription = null;
 					if (data.length === 0) this.stopScrolling = true;
 					else if (data.length < this.limit) this.stopScrolling = true;
 				},
 				(err) => {
+					this.subscription = null;
 					console.log(err);
 					this.err = true;
 					this.showLoader = false;
