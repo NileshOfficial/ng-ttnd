@@ -20,6 +20,9 @@ export class DepartmentComponent implements OnInit {
 
 	editingDept: boolean = false;
 
+	confirmation: boolean = false;
+	message: string = '';
+
 	constructor(private deptApi: DepartmentapiService) {}
 
 	ngOnInit(): void {}
@@ -33,14 +36,8 @@ export class DepartmentComponent implements OnInit {
 	}
 
 	deleteDept() {
-		this.deptApi.deleteDeparment(this.data._id).subscribe(
-			(data) => {
-				this.reload.emit(true);
-			},
-			(err) => {
-				console.log(err);
-			}
-		);
+		this.message = `Are you sure to delete department: ${this.data.name.toUpperCase()}`;
+		this.confirmation = true;
 	}
 
 	updateDept(input: HTMLInputElement) {
@@ -56,5 +53,20 @@ export class DepartmentComponent implements OnInit {
 				console.log(err);
 			}
 		);
+	}
+
+	proceed(event: any) {
+		this.confirmation = false;
+		if (event) {
+			this.deptApi.deleteDeparment(this.data._id).subscribe(
+				(data) => {
+					console.log(data);
+					this.reload.emit(true);
+				},
+				(err) => {
+					console.log(err);
+				}
+			);
+		}
 	}
 }
