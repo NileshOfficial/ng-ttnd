@@ -26,6 +26,9 @@ export class ComplaintComponent implements OnInit {
 	updatingStatus: boolean = false;
 	updatingStatusErr: boolean = false;
 
+	confirmation: boolean = false;
+	message: string = '';
+
 	constructor(private complaintApi: ComplaintapiService, private deptApi: DepartmentapiService) {}
 
 	ngOnInit(): void {
@@ -70,12 +73,8 @@ export class ComplaintComponent implements OnInit {
 	}
 
 	deleteComplaint() {
-		this.complaintApi.deleteComplaint(this.data._id).subscribe(
-			(data) => {
-				this.reload.emit(true);
-			},
-			(err) => console.log(err)
-		);
+		this.message = `Are sure to delete the complaint associated with Issue ID: ${this.data.issueId}`;
+		this.confirmation = true;
 	}
 
 	discardStatusUpdate() {
@@ -123,5 +122,17 @@ export class ComplaintComponent implements OnInit {
 				console.log(err);
 			}
 		);
+	}
+
+	proceed(event: any) {
+		this.confirmation = false;
+		if (event) {
+			this.complaintApi.deleteComplaint(this.data._id).subscribe(
+				(data) => {
+					this.reload.emit(true);
+				},
+				(err) => console.log(err)
+			);
+		}
 	}
 }

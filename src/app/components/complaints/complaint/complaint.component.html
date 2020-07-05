@@ -106,3 +106,5 @@
 		(close)="hideEditForm()"
 	></ttnd-edit-complaint>
 </div>
+
+<ttnd-confirmation [show]="confirmation" [message]="message" (decision)="proceed($event)"></ttnd-confirmation>
