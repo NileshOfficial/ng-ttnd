@@ -41,6 +41,9 @@ export class BuzzPostComponent implements OnInit {
 	showEditForm: boolean = false;
 	editFormData: any = null;
 
+	confirmation: boolean = false;
+	message: string = '';
+
 	constructor(private buzzApi: BuzzapiService) {}
 
 	ngOnInit(): void {
@@ -142,9 +145,8 @@ export class BuzzPostComponent implements OnInit {
 	}
 
 	deleteBuzz() {
-		this.buzzApi.deleteBuzz(this.data._id).subscribe(data => {
-			this.reload.emit(true);
-		}, err => {console.log(err)});
+		this.message = 'Are sure to delete your post';
+		this.confirmation = true;
 	}
 
 	showImages() {
@@ -164,5 +166,14 @@ export class BuzzPostComponent implements OnInit {
 		if(event)
 			this.reload.emit(true);
 		this.showEditForm = false;
+	}
+
+	proceed(event: any) {
+		this.confirmation = false;
+		if(event) {
+			this.buzzApi.deleteBuzz(this.data._id).subscribe(data => {
+				this.reload.emit(true);
+			}, err => {console.log(err)});
+		}
 	}
 }
