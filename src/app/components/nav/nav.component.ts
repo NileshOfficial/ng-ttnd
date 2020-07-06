@@ -13,7 +13,6 @@ export class NavComponent implements OnInit {
 
 	ngOnInit(): void {
     const idTokenData = this.authData.idTokenData();
-    console.log(idTokenData.role_code)
 		this.userEmail = idTokenData.email;
 		this.roleCode = idTokenData.role_code;
 	}
