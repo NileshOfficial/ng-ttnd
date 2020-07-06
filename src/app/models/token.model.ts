@@ -14,7 +14,7 @@ export interface UserProfile {
     email: string;
     picture: string;
     department: string;
-    role_code: string;
+    role_code: number;
     contact: string,
     dob: string;
 }
