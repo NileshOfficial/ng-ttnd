@@ -14,11 +14,11 @@
 			<i class="fal fa-tags"></i>
 			<span class="text">my complaints</span>
 		</li>
-		<li [routerLink]="['/home', 'resolve']" routerLinkActive="text-primary">
+		<li *ngIf="roleCode >= 1" [routerLink]="['/home', 'resolve']" routerLinkActive="text-primary">
 			<i class="fal fa-shield-check"></i>
 			<span class="text">resolve</span>
 		</li>
-		<li [routerLink]="['/home', 'su']" routerLinkActive="text-primary">
+		<li *ngIf="roleCode === 2" [routerLink]="['/home', 'su']" routerLinkActive="text-primary">
 			<i class="fal fa-crown"></i>
 			<span class="text">super</span>
 		</li>
