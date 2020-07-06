@@ -8,26 +8,28 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { ComplaintsComponent } from './components/complaints/complaints.component';
 import { ResolveBoardComponent } from './components/resolve-board/resolve-board.component';
 import { SuBoardComponent } from './components/su-board/su-board.component';
+import * as guards from './guards/route-guards';
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/auth/login', pathMatch: 'full' },
 	{
 		path: 'auth',
 		children: [
-			{ path: '', component: AuthCallbackComponent },
+			{ path: '', canActivate: [guards.GrantCodeCheckGuard], component: AuthCallbackComponent },
 			{ path: 'login', component: LoginBoardComponent }
 		]
 	},
 	{
 		path: 'home',
+		canActivate: [guards.DirectRouteAccessGuard],
 		component: HomeComponent,
 		children: [
 			{ path: 'buzz', component: BuzzComponent },
 			{ path: 'myprofile', component: ProfilePageComponent },
 			{ path: 'profile', component: ProfilePageComponent },
 			{ path: 'complaints', component: ComplaintsComponent },
-			{ path: 'resolve', component: ResolveBoardComponent },
-			{ path: 'su', component: SuBoardComponent}
+			{ path: 'resolve', canActivate: [guards.VerifyRole], data: { role_code: 1}, component: ResolveBoardComponent },
+			{ path: 'su', canActivate: [guards.VerifyRole], data: { role_code: 2}, component: SuBoardComponent}
 		]
 	}
 ];
