@@ -9,7 +9,7 @@ import { VALIDATE } from 'src/app/config/uri.conf';
 	providedIn: 'root'
 })
 export class AuthapiService {
-	constructor(private http: HttpClient, private loginData: LoginDataService) {}
+	constructor(private http: HttpClient) {}
 
 	getAuthToken(route: string, code: string): Observable<LoginToken> {
 		const endpoint = [route, encodeURIComponent(code)].join('/');
