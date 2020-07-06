@@ -4,6 +4,7 @@ const getEndpoint = (path: string): string => [SERVER_DOMAIN, path].join('/');
 
 export const SIGN_UP: string = getEndpoint('auth/signup');
 export const SIGN_IN: string = getEndpoint('auth/signin');
+export const VALIDATE: string = getEndpoint('auth/validate');
 
 export const BUZZ: string = getEndpoint('buzz');
 export const BUZZ_POST: string = getEndpoint('post');
